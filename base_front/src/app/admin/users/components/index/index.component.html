@@ -6,7 +6,7 @@
                     <i class="las la-user color-primary fs-big mr-3"></i>
                     <p class="f-subtitle color-primary fs-normal nowrap">Usuarios</p>
                 </div>
-                <p class="color-gray3 x-small">Estas son todos los Usuarios registrados en la plataforma, puedes crear, editar, consultar información o eliminar.</p>
+                <p class="color-gray3 x-small">Estos son todos los Usuarios registrados en la plataforma. <br> Puedes: <b> crear, editar, consultar información o eliminar.</b></p>
             </div>
         </div>
         <div class="col-lg-3">
@@ -116,13 +116,13 @@
                 </div>
             </div>
             <div class="box--pagination py-3 px-4">
-                <span class="txt-dgold pl-2 ">Showing {{totalPages.to}} of {{totalPages.total}} records</span>
+                <span class="txt-dgold pl-2 ">Mostrando {{totalPages.to}} de {{totalPages.total}} registros</span>
                 <nav class="navigation pagination d-flex justify-content-center " role="navigation " *ngIf="pages.length> 0">
                     <div class="nav-links ">
                         <a class="page-numbers {{page[2]}}" href="javascript:;" (click)="getPage(page[1])" [innerHTML]="page[0]" *ngFor="let page of pages"></a>
                     </div>
                 </nav>
-                <span class="txt-dgold text-right">Page {{totalPages.current_page}} of {{totalPages.last_page}}</span>
+                <span class="txt-dgold text-right">Página {{totalPages.current_page}} de {{totalPages.last_page}}</span>
             </div>
         </div>
     </div>

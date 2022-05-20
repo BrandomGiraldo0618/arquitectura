@@ -109,13 +109,13 @@
                     </div>
                 </div>
                 <div class="box--pagination py-3 px-4">
-                    <span class="txt-dgold pl-2 ">Showing {{totalPages.to}} of {{totalPages.total}} records</span>
+                    <span class="txt-dgold pl-2 ">Mostrando {{totalPages.to}} de {{totalPages.total}} registros</span>
                     <nav class="navigation pagination d-flex justify-content-center " role="navigation " *ngIf="pages.length> 0">
                         <div class="nav-links ">
                             <a class="page-numbers {{page[2]}}" href="javascript:;" (click)="getPage(page[1])" [innerHTML]="page[0]" *ngFor="let page of pages"></a>
                         </div>
                     </nav>
-                    <span class="txt-dgold text-right">Page {{totalPages.current_page}} of {{totalPages.last_page}}</span>
+                    <span class="txt-dgold text-right">Página {{totalPages.current_page}} de {{totalPages.last_page}}</span>
                 </div>
 
             </div>
