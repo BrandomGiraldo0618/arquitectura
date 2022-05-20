@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('../../assets/fonts/Lato/Lato-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('../../assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../../assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins-semibold';
+    src: url('../../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Ubuntu-regular';
+    src: url('../../assets/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Ubuntu-semibold';
+    src: url('../../assets/fonts/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
+}
+
+$title-bold: 'Ubuntu-semibold';
+$title-regular: 'Ubuntu-regular';
+$body-regular: 'Ubuntu-Regular';
+$body-bold: 'Ubuntu-Bold';
+body {
+    color: $body-color;
+    font-family: $body-regular;
+    font-size: $body-size;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $title-regular;
+    margin-bottom: 0;
+    &.normal {
+        font-family: $body-regular;
+    }
+}
+
+.nav-menu {
+    li {
+        font-family: $title-regular;
+        &.selected {
+            font-family: $title-bold;
+        }
+    }
+}
+
+button,
+a {
+    font-family: $title-regular;
+}
+
+.semibold {
+    font-family: $title-bold;
+}
+
+.title-regular {
+    font-family: $title-regular;
+}

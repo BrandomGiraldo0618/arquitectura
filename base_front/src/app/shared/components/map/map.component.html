@@ -1,0 +1,157 @@
+<div class="info">
+    <div class="row align-items-center">
+        <div class="col-lg-9 d-none d-md-block">
+            <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center b-right mr-4 pr-4">
+                    <i class="las la-user color-primary fs-big mr-3"></i>
+                    <p class="f-subtitle color-primary fs-normal nowrap">Mapa</p>
+                </div>
+                <p class="color-gray3 x-small">Aquí visualizas todas las estaciones de monitoreo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-7">
+        <div class="card">
+            <agm-map [latitude]="lat" [longitude]="long" [zoom]="zoom" [mapTypeId]="'roadmap'">
+                <agm-marker *ngFor="let marker of markers;" [latitude]="marker.lat" [longitude]="marker.lon" [iconUrl]="marker.icon" (markerClick)="markerClicked(marker.id)">
+                </agm-marker>
+            </agm-map>
+        </div>
+
+    </div>
+    <div class="container card medidor p-0 m-0 col-sm-5 col-12" [ngStyle]="{'background-color': capture_log.color}">
+        <div class="row p-5 m-0">
+            <div class="col p-0">
+                <div class="container-fluid p-0">
+                    <div class="row m-0 p-0">
+                        <div class="col p-0">
+                            <div class="cloud_map">
+                            </div>
+                            <div class="text_cloud">
+                                <p class="semibold">{{capture_log.ica | number : '1.0-0'}}</p>
+                            </div>
+                            <div class="col p-0 text_aqui_tittle">
+                                <p class="semibold">AQI</p>
+                            </div>
+                            <div class="col p-0 text_aqui_sub_tittle">
+                                <p class="semibold">Nivel de calidad del aire <br> </p>
+                                13 *** de 100 *** puntos
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col p-0 text_quality_tittle pb-5">
+                            <p class="semibold">La calidad del aire en<br> MANIZALES es</p>
+                        </div>
+                        <div class="col p-0 text_quality_face pb-3 d-flex">
+                            <img [src]="capture_log.url_emoticon" alt="" class="face_map">
+                            <p class="semibold">{{capture_log.name}}</p>
+                        </div>
+                        <div class="col p-0">
+                            <p class="semibold">{{capture_log.description}}</p>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="px-4 text_quality_p col-9 col-sm-9">
+                            <p class="semibold">{{capture_log.description}}</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col p-0">
+                <div class="ul_map">
+                    <ul class="align-items-end d-flex flex-column pl-0">
+                        <li> <i class="las la-tint fs-big"></i>
+                            <small for="">Hume.</small>
+                            <label class="semibold ">0,7</label>
+                        </li>
+                        <li> <i class="las la-thermometer-half fs-big"></i>
+                            <small for="">Temp.</small>
+                            <label class="semibold">22°C</label>
+                        </li>
+                        <li> <i class="las la-mountain fs-big"></i>
+                            <small for="">Altura</small>
+                            <label class="semibold">2,145</label>
+                        </li>
+                        <li> <i class="las la-cloud-sun-rain fs-big"></i>
+                            <small for="">Presión</small>
+                            <label class="semibold">45h</label>
+                        </li>
+                        <li> <i class="las la-chart-bar fs-normal chart_icon pointer"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- <div class="col-12 col-sm-5">
+        <div class="container card medidor_map p-0 m-0" [ngStyle]="{'background-color': capture_log.color}">
+            <div class="row">
+                <div class="col cloud_map">
+                </div>
+                <div class="col text_cloud">
+                    <p class="semibold">{{capture_log.ica | number : '1.0-0'}}</p>
+                </div>
+                <div class="col text_aqui_tittle">
+                    <p class="semibold">AQI</p>
+                </div>
+                <div class="col text_aqui_sub_tittle">
+                    <p class="semibold">Nivel de calidad del aire <br> </p>
+                    13 *** de 100 *** puntos
+                </div>
+            </div>
+            <div class="row">
+                <div class="col face_map pt-2">
+                    <img [src]="capture_log.url_emoticon" alt="">
+                </div>
+                <div class="col text_quality_tittle pb-4">
+                    <p class="semibold">La calidad del aire en<br> MANIZALES es</p>
+                </div>
+                <div class="col text_quality_face">
+                    <p class="semibold">{{capture_log.name}}</p>
+                </div>
+            </div>
+            <div class="row m-4">
+                <div class="px-4 text_quality_p col-9 col-sm-9">
+                    <p class="semibold">{{capture_log.description}}</p>
+                </div>
+            </div>
+            <div class="col p-0">
+                <div class="ul_map">
+                    <ul class="align-items-end d-flex flex-column pl-0">
+                        <li> <i class="las la-tint fs-big"></i>
+                            <small for="">Hume.</small>
+                            <label class="semibold ">0,7</label>
+                        </li>
+                        <li> <i class="las la-thermometer-half fs-big"></i>
+                            <small for="">Temp.</small>
+                            <label class="semibold">22°C</label>
+                        </li>
+                        <li> <i class="las la-mountain fs-big"></i>
+                            <small for="">Altura</small>
+                            <label class="semibold">2,145</label>
+                        </li>
+                        <li> <i class="las la-cloud-sun-rain fs-big"></i>
+                            <small for="">Presión</small>
+                            <label class="semibold">45h</label>
+                        </li>
+                        <li> <i class="las la-chart-bar fs-normal chart_icon pointer"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row more_detail w-100" *ngIf="moreDetail">
+                <div class="" tooltip="Detalle">
+                    <a class="btn btn-outline-light pointer" tooltip="Detalle" (click)="showDetail()">Ampliar información</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

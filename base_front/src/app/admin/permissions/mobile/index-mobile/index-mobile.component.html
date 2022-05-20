@@ -1,0 +1,75 @@
+<div class="roles-permissions-bottom bg-white">
+  <div class="roles-permissions-bottom-head d-flex d-sm-none justify-content-between align-items-center">
+    <div class="d-flex justify-content-start align-items-center">
+      <div class="arrow-back d-flex pointer">
+        <i class="las la-long-arrow-alt-left" (click)="togglePermissions()"></i>
+      </div>
+      <div class="d-flex">
+        <span class="txt-bottom fs-small f-subtitle">Permisos para Rol 'Líder **'</span>
+      </div>
+    </div>
+  </div>
+  <hr class="divisor m-0">
+  <div class="roles-permissions-bottom-body d-flex d-sm-none justify-content-between align-items-start flex-column">
+    <div class="item-select d-flex justify-content-between align-items-center w-100" id="shadow1" (click)="collapse(1); shadow(1)">
+      <div class="d-flex">
+        <span class="txt-bottom-body f-subtitle">USUARIOS DEL PANEL</span>
+      </div>
+      <div class="arrow-collapse d-flex pointer">
+        <i class="las la-angle-right" id="arrow-item1"></i>
+      </div>
+    </div>
+    <ul class="box-permissions-list w-100" id="collapse1">
+      <li class="d-flex justify-content-between align-items-start">
+        <span class="permission-name bg-white">Todos los permisos</span>
+        <div class="onoffswitch bg-white">
+          <input type="checkbox" class="onoffswitch-checkbox" id="onoffswitch-checkbox1">
+          <label class="onoffswitch-label mb-0" for="onoffswitch-checkbox1">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </li>
+      <li class="d-flex justify-content-between align-items-start">
+        <span class="permission-name bg-white">Todos los permisos</span>
+        <div class="onoffswitch bg-white">
+          <input type="checkbox" class="onoffswitch-checkbox" id="onoffswitch-checkbox2">
+          <label class="onoffswitch-label mb-0" for="onoffswitch-checkbox2">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </li>
+    </ul>
+    <div class="item-select d-flex justify-content-between align-items-center w-100" id="shadow2" (click)="collapse(2); shadow(2)">
+      <div class="d-flex">
+        <span class="txt-bottom-body">USUARIOS DEL PANEL</span>
+      </div>
+      <div class="arrow-collapse d-flex pointer">
+        <i class="las la-angle-right" id="arrow-item2"></i>
+      </div>
+    </div>
+    <ul class="box-permissions-list w-100" id="collapse2">
+      <li class="d-flex justify-content-between align-items-start">
+        <span class="permission-name bg-white">Todos los permisos</span>
+        <div class="onoffswitch bg-white">
+          <input type="checkbox" class="onoffswitch-checkbox" id="onoffswitch-checkbox3">
+          <label class="onoffswitch-label mb-0" for="onoffswitch-checkbox3">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </li>
+      <li class="d-flex justify-content-between align-items-start">
+        <span class="permission-name bg-white">Todos los permisos</span>
+        <div class="onoffswitch bg-white">
+          <input type="checkbox" class="onoffswitch-checkbox" id="onoffswitch-checkbox4">
+          <label class="onoffswitch-label mb-0" for="onoffswitch-checkbox4">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

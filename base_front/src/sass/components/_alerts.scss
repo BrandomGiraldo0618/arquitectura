@@ -1,0 +1,29 @@
+.input-error {
+	background-color: $gray1;
+    border-radius: $border1;
+    color: $red;
+    max-height: 0;
+    overflow: hidden;
+	position: absolute;
+	transition: all 0.3s;
+    width: 100%;
+    z-index: 1;
+
+    span {
+	    background-color: $red;
+	    color: $base-color;
+	    font-size: 1.5rem;
+    	height: 100%;
+	    left: 0;
+	    padding-top: 0.2rem;
+	    position: absolute;
+	    text-align: center;
+	    top: 0;
+	    width: 2rem;
+    }
+
+    &.opened {
+    	max-height: initial;
+    	padding: 0.5rem 1rem 0.5rem 3rem;
+    }
+}

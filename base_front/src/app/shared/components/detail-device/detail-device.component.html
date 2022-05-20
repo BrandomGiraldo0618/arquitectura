@@ -1,0 +1,120 @@
+<div>
+    <div class="info">
+        <div class="row align-items-center">
+            <div class="col-lg-9 d-none d-md-block">
+                <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center b-right mr-4 pr-4">
+                        <i class="las la-user color-primary fs-big mr-3"></i>
+                        <p class="f-subtitle color-primary fs-normal nowrap">Equipos</p>
+                    </div>
+                    <p class="color-gray3 x-small">Aquí puedes detallar la información ampliada del equipo. Puedes consultar sus mediciones y comentarios filtrando los rangos de fecha.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="showMap">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <agm-map [latitude]="lat" [longitude]="long" [zoom]="zoom">
+                        <agm-marker [iconUrl]="device.icon" [latitude]="device.lat" [longitude]="device.lon">
+                        </agm-marker>
+                    </agm-map>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card pl-5">
+                    <div class="row ">
+                        <div class="col-12 col-md-6">
+                            <h4 class="pt-4 pb-2 color-primary semibold">{{device.name}}</h4>
+                            <span class="color-gray3">Información del Equipo / Estación</span>
+                        </div>
+                    </div>
+                    <div class="spacer20 "></div>
+
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <span class="color-gray3">Device ID</span>
+                            <br>
+                            <label for="" class="semibold">{{device.device_id}}</label>
+
+                        </div>
+                        <div class="col-md-6 ">
+                            <span class="color-gray3">Llave</span>
+                            <br>
+                            <label for="" class="semibold">{{device.key}}</label>
+                        </div>
+
+                    </div>
+
+                    <div class="spacer20 "></div>
+
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <span class="color-gray3">Fecha Instalación</span>
+                            <br>
+                            <label for="" class="semibold">{{device.created_at}}</label>
+                        </div>
+                        <div class="col-md-6 ">
+                            <span class="color-gray3">Referencia</span>
+                            <br>
+                            <label for="" class="semibold">{{device.reference.name}}</label>
+                        </div>
+                    </div>
+                    <div class="spacer20 "></div>
+
+                    <div class="row ">
+
+                        <div class="col-md-6 ">
+                            <span class="color-gray3">Última lectura</span>
+                            <br>
+                            <label for="" class="semibold">{{device.created_at}}</label>
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <span class="color-gray3">Factor de Conversión</span>
+                            <br>
+                            <label for="" class="semibold">{{device.reference.name}}</label>
+                        </div>
+                    </div>
+
+
+                    <div class="spacer20 "></div>
+
+                    <div class="row mb-4 mr-4">
+                        <div class="d-flex col-md-12 align-items-center justify-content-around">
+                            <div class="col-3 d-flex p-0">
+                                <label class="semibold pr-4">Estado</label>
+
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="status-role" class="onoffswitch-checkbox" id="status-role" tabindex="0" [(ngModel)]="device.active">
+                                    <label class="onoffswitch-label" for="status-role" (click)="changeStatus(device.id)">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-light position-relative" (click)="showBinnacle()">
+                                <i class="las la-file-archive fs-normal mr-2 " ></i> Bitácora
+                                <span class="position-absolute  start-100 translate-end badge badge_bitacora badge-primary rounded-circle">
+                                    {{device.maintenances.data.length}}
+                                </span>
+                            </button>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="spacer20"></div>
+    </div>
+</div>
+<app-report [deviceId]='deviceId' [selectDevice]='false'></app-report>
+<app-modal-bitacora [opened]="opened" [maintenances]="maintenances" [deviceId]="deviceId" (refreshTemplate)="refresh($event)">
+</app-modal-bitacora>
+<!-- <app-notification-side-menu class="position-absolute"></app-notification-side-menu> -->

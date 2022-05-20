@@ -1,0 +1,11 @@
+<router-outlet></router-outlet>
+
+<div class="loading" *ngIf="loading">
+	<div class="spinner">
+	  	<div class="dot1"></div>
+	  	<div class="dot2"></div>
+	</div>
+</div>
+
+
+<app-modal-message #modalMessage [type]="typeModal" [content]="contentModal"></app-modal-message>

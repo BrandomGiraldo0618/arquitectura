@@ -1,0 +1,37 @@
+.modal-backdrop {
+    // background-color: $gray3;
+}
+
+.modal-dialog {
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.modal {
+    .modal-content {
+        border: 0;
+        .modal-header {
+            border: 0;
+            justify-content: center;
+            padding: 1rem 0rem 0;
+            .icon-message {
+                font-size: 2.5rem;
+                &.error {
+                    color: $red;
+                }
+                &.success {
+                    color: $green;
+                }
+            }
+            .close {
+                position: absolute;
+                right: 1rem;
+            }
+        }
+        .modal-footer {
+            justify-content: center;
+        }
+    }
+}

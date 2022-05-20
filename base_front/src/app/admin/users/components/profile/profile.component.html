@@ -1,0 +1,144 @@
+<div class="detail-user-profile-top bg-white position-absolute">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="arrow-back d-flex pointer">
+                <i class="las la-long-arrow-alt-left" (click)="location.back()"></i>
+            </div>
+            <div class="d-flex">
+                <span class="ml-4 f-subtitle color-primary fs-small">ID - 18</span>
+            </div>
+        </div>
+
+        <div class="container-icons-top d-flex justify-content-between align-items-center">
+            <div class="onoffswitch bg-white icons-top ml-2 mr-3">
+                <input type="checkbox" class="onoffswitch-checkbox" id="onoffswitch-checkbox">
+                <label class="onoffswitch-label mb-0" for="onoffswitch-checkbox">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        </label>
+            </div>
+            <div routerLinkActive="selected" class="d-flex align-items-center icons-top ml-2 mr-2" routerLink="/admin/panel">
+                <i class="las la-edit"></i>
+            </div>
+            <div routerLinkActive="selected" class="d-flex align-items-center icons-top ml-2 mr-0" routerLink="/admin/panel">
+                <i class="las la-trash-alt"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-container-data d-flex flex-column align-items-center">
+    <div class="first-container-data d-flex flex-column bg-white align-items-center w-100 mb-3">
+        <div class="first-container-items-data d-flex flex-column align-items-center">
+            <div class="container-user-image p-4 d-flex align-items-center justify-content-center mb-3 mt-3">
+                <i class="las la-user color-white"></i>
+            </div>
+            <p class="txt-name f-subtitle color-primary fs-small">Jhon Doe Martin Scoth</p>
+        </div>
+        <div class="first-container-items-data d-flex align-items-center">
+            <div class="container-user-progress d-flex align-items-center justify-content-center mr-3 bg-white">
+                <span class="txt-progress f-subtitle font-weight-bold">89%</span>
+            </div>
+            <p class="txt-progress f-subtitle">Progreso Global</p>
+        </div>
+        <div class="first-container-items-data d-flex align-items-center mt-2">
+            <div class="d-flex align-items-center justify-content-center mr-2 bg-white">
+                <i class="lab la-font-awesome-flag"></i>
+            </div>
+            <p class="txt-publications f-subtitle"><span class="font-weight-bold fs-normal">10</span> Publicaciones realizadas
+            </p>
+        </div>
+        <div class="first-container-items-data d-flex align-items-center mt-3 mb-3">
+            <div class="d-flex align-items-center justify-content-center mr-3 bg-white">
+                <i class="las la-list-ul"></i>
+            </div>
+            <p class="txt-last f-subtitle pl-4">Progreso de la ultima semana</p>
+        </div>
+    </div>
+
+    <div class="first-container-data d-flex flex-column bg-white align-items-center w-100 mb-3">
+        <div class="first-container-items-data d-flex align-items-center px-4 justify-content-center w-100 mt-1 position-relative">
+            <span class="fs-small color-primary f-subtitle">PUBLICACIONES</span>
+            <span class="number-publications fs-small color-primary f-subtitle position-absolute">10</span>
+        </div>
+        <div class="second-container-items-data justify-content-center w-100 p-3">
+            <div class="gallery d-flex align-items-center justify-content-center">
+                <i class="las la-image color-white"></i>
+            </div>
+            <div class="gallery d-flex align-items-center justify-content-center">
+                <i class="las la-image color-white"></i>
+            </div>
+            <div class="gallery d-flex align-items-center justify-content-center">
+                <i class="las la-image color-white"></i>
+            </div>
+            <div class="gallery d-flex align-items-center justify-content-center">
+                <i class="las la-image color-white"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="first-container-data d-flex flex-column bg-white align-items-center w-100 mb-3">
+        <div class="d-flex flex-column bg-white align-items-center w-100 p-3">
+            <div class="first-container-items-data d-flex align-items-center w-100 mb-2 mt-1">
+                <div class="d-flex align-items-center justify-content-center w-100">
+                    <p class="txt-subtitle f-subtitle color-primary fs-small">DATOS GENERALES</p>
+                </div>
+            </div>
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">Tipo Doc.</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start">Cédula de Ciudadanía</span>
+                </div>
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">No. Doc.</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start">1.110.000.001</span>
+                </div>
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">Ciudad</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start">Manizales, Caldas</span>
+                </div>
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">Dirección</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start">Calle 4 No. 6-30 A Sur 45B</span>
+                </div>
+            </div>
+        </div>
+        <hr class="w-100 m-0">
+        <div class="d-flex flex-column bg-white align-items-center w-100 mt-0 p-3">
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">E-mail</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start">jhonejemplo@gmail.co</span>
+                </div>
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">Rol</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start">Usuario</span>
+                </div>
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">Celular</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start">30045637892</span>
+                </div>
+                <div class="items-data w-100 d-flex">
+                    <p class="txt-data col-3 pl-0 pr-0 d-flex justify-content-start">Estado</p>
+                    <span class="txt-data-second font-weight-bold col pl-4 pr-0 d-flex justify-content-start"><span
+            class="txt-dot text-success fs-big mr-2">· </span>ACTIVO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="first-container-data d-flex flex-column bg-white align-items-center w-100">
+        <div class="first-container-items-data d-flex align-items-center w-100 mb-2 mt-1">
+            <div class="d-flex align-items-center justify-content-center w-100">
+                <p class="txt-subtitle f-subtitle color-primary fs-small">ÚLTIMA ACTUALIZACIÓN</p>
+            </div>
+        </div>
+        <div class="d-flex flex-column align-items-center w-100 mb-2">
+            <div class="container-time w-100 d-flex align-items-center">
+                <p class="txt-time col pl-0 pr-0 d-flex justify-content-center color-secondary semibold mr-2">08</p>
+                <p class="txt-time col pl-0 pr-0 d-flex justify-content-center color-secondary mr-2">Agosto 2021</p>
+                <p class="txt-time col pl-0 pr-0 d-flex justify-content-center color-secondary">02:20 pm</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+.main-content {
+    background-color: $gray1;
+    min-height: 100vh;
+    padding: 30px 2rem;
+    padding-left: calc(#{$menu-width} + 2rem);
+    transition: all 1s;
+    // 
+    overflow-x: hidden;
+    .info {
+        background-color: $white;
+        border-bottom: 2px solid rgba($gray2, 40%);
+        left: $menu-width;
+        padding: 1rem 2rem;
+        padding-top: 6rem;
+        position: fixed;
+        top: 0;
+        transition: all 1s;
+        width: calc(100% - #{$menu-width});
+        z-index: 2;
+        &+div {
+            margin-top: 10rem;
+        }
+        &--form {
+            .inn-form {
+                border-top: 2px solid rgba($gray2, 40%);
+                margin: 0 -2rem;
+                padding: 1rem 2rem 0;
+                .form-group {
+                    .form-control {
+                        background-color: initial;
+                        border: 0;
+                        border-bottom: 1px solid $gray2;
+                        border-radius: 0;
+                    }
+                }
+            }
+            &+div {
+                margin-top: 14.5rem;
+            }
+        }
+    }
+    &.aside-xs {
+        padding-left: calc(#{$menu-width-xs} + 2rem);
+        .info {
+            width: calc(100% - #{$menu-width-xs});
+            left: #{$menu-width-xs};
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .main-content {
+        padding: 30px 0;
+        .info {
+            &+div {
+                margin-top: 12rem;
+            }
+        }
+        &.aside-xs {
+            .info {
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content.aside-xs {
+        padding: 30px 0;
+    }
+    .main-content {
+        overflow: hidden;
+        background-color: $gray1;
+        .info+.dashboard-box {
+            margin-top: 5rem;
+            margin-left: 25px;
+            margin-right: 25px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+        .dashboard-box {
+            background: transparent;
+            .dashboard-row {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                width: 100%;
+                grid-column-gap: 10px;
+                .dashboard-col {
+                    border-right: 1px solid $gray1;
+                    background: #fff;
+                    border-radius: 10px;
+                    padding: 0px;
+                    >div {
+                        padding-left: 1rem !important;
+                    }
+                    i {
+                        color: #69B6F2 !important;
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+    // .dashboard-row-graphics {
+    //     padding-left: 25px;
+    //     padding-right: 25px;
+    // }
+    #chart-users .frappe-chart {
+        height: 350px;
+    }
+}

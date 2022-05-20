@@ -1,0 +1,16 @@
+{
+    "login": {
+        "login": "Log In",
+        "register": "Register",
+        "welcome": "We're glad to see you again!",
+        "no_account": "Don't have an account?",
+        "sign_up": "Sign Up!",
+        "email": "Email address",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "forgot": "Forgot Password?",
+        "lets_create": "Let's create your account!",
+        "client": "Client",
+        "provider": "Provider"
+    }
+}

@@ -1,0 +1,35 @@
+.pagination {
+    padding: 0 25px;
+    position: relative;
+    .nav-links {
+        align-items: center;
+        display: inline-flex;
+        flex-wrap: wrap;
+        .page-numbers {
+            align-items: center;
+            background-color: $gray1;
+            border-radius: $border2;
+            border: 1px solid $gray1;
+            color: $gray4;
+            display: flex;
+            font-size: map-get($font-sizes, x-small);
+            height: 30px;
+            justify-content: center;
+            margin: 0 0.15rem;
+            text-decoration: none !important;
+            width: 30px;
+            &.active {
+                border-color: $blue;
+                background-color: $blue;
+                color: $base-color;
+            }
+            &:first-child,
+            &:last-child {
+                background-color: $gray1;
+                border: 0;
+                color: $gray4;
+                font-size: map-get($font-sizes, normal);
+            }
+        }
+    }
+}

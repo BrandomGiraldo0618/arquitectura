@@ -1,0 +1,83 @@
+<div class="header-top d-flex d-sm-none justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="color-secondary d-flex pointer">
+            <i class="las la-bars" (click)="toggleMenu('menu')"></i>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-menu">
+            <div routerLinkActive="selected" routerLink="/admin/panel">
+                <i class="las la-desktop"></i><span class="ml-2">Dashboard</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="options">
+        <i class="las la-bell" (click)="toggleMenu('notifications')"></i>
+        <i class="las la-user" (click)="toggleMenu('user')"></i>
+    </div>
+
+    <div class="container-drawer container-drawer--menu position-fixed" id="drawer-menu">
+        <div class="drawer drawer-menu vh-100 bg-white" (click)="stopPropagation($event)">
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="color-primary">PANEL ADMINISTRATIVO</p>
+                <i class="las la-long-arrow-alt-left" (click)="toggleMenu('menu')"></i>
+            </div>
+
+            <nav class="mt-5">
+                <div class="text-center mb-5">
+                    <a href="javascript:" routerLink="/">
+                        <img src="assets/images/admin/logo-menu.png" alt="Logo">
+                        <!--<img src="assets/images/svg/favicon.svg" alt="" *ngIf="collapseMenu">-->
+                    </a>
+                </div>
+                <div class="spacer5"></div>
+                <div class="d-flex justify-content-center">
+                    <ul class="items-menu mt-3 d-flex justify-content-center flex-column">
+                        <li routerLinkActive="selected" class="d-flex align-items-center mt-3" routerLink="/admin/panel" (click)="toggleMenu('menu')">
+                            <i class="las la-desktop"></i><span class="item-menu-text">Dashboard</span>
+                        </li>
+                        <li routerLinkActive="selected" class="d-flex align-items-center mt-3" routerLink="/admin/usuarios" (click)="toggleMenu('menu')">
+                            <i class="las la-user"></i><span class="item-menu-text">Usuarios del Panel</span>
+                        </li>
+                        <li routerLinkActive="selected" class="d-flex align-items-center mt-3" routerLink="/admin/roles-y-permisos" (click)="toggleMenu('menu')">
+                            <i class="lar la-id-badge"></i><span class="item-menu-text">Roles y Permisos</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="drawer-overlay w-100 vh-100" (click)="toggleMenu('menu')"></div>
+    </div>
+
+    <div class="container-drawer container-drawer--user position-fixed" id="drawer-user">
+        <div class="drawer drawer-user vh-100 bg-white" (click)="stopPropagation($event)">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="options">
+                    <i class="las la-user"></i>
+                    <span class="color-primary ml-2">{{user.name}}</span>
+                </div>
+                <i class="las la-long-arrow-alt-right" (click)="toggleMenu('user')"></i>
+            </div>
+
+            <div class="info-user d-flex flex-column align-items-center justify-content-center">
+                <div class="text-center mt-5">
+                    <div class="mb-3 p-4 info-user__avatar">
+                        <i class="las la-user display-1 text-white"></i>
+                    </div>
+                    <h5 class="color-primary f-subtitle">{{user.name}}</h5>
+                    <p class="color-gray3" *ngIf="user.roles.length > 0">{{user.roles[0].name | titlecase}}</p>
+                </div>
+                <div class="w-100 mt-5">
+                    <button class="btn btn-default btn-block"><i class="las la-cog"></i> Configurar perfil </button>
+                    <button class="btn btn-default btn-block" (click)="service.logout();">
+            Cerrar sesión y guardar
+          </button>
+                </div>
+            </div>
+        </div>
+        <div class="drawer-overlay w-100 vh-100" (click)="toggleMenu('user')"></div>
+    </div>
+    <app-notification-side-menu class="position-absolute"></app-notification-side-menu>
+</div>

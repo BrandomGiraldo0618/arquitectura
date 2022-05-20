@@ -1,0 +1,44 @@
+@include media-breakpoint-down(sm) {
+	#bg-login {
+
+		.column-1{
+			height: 80vh;
+			width: 100%;
+		}
+
+		.column-2{
+			height: 20vh;
+			width: 100%;
+			top: 80%;
+		}
+	}
+}
+
+@include media-breakpoint-down(md) {
+
+}
+
+@include media-breakpoint-down(lg) {
+
+}
+
+@include media-breakpoint-down(xl) {
+
+}
+
+@include media-breakpoint-down(xxl) {
+
+}
+
+
+@include media-breakpoint-up(sm) {
+
+}
+
+@include media-breakpoint-up(md) {
+  #bg-login {
+    .site-data{
+      min-height: 100vh;
+    }
+  }
+}

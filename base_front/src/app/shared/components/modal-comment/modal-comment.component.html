@@ -1,0 +1,53 @@
+<div class="sidebar sidebar--large sidebar--right" [class.opened]="opened">
+    <div class="px-4 py-3">
+        <div class="row py-4">
+            <div class="col text-left">
+                <h4 class="color-primary semibold">Comentarios</h4>
+            </div>
+            <div class="col"> <span class="badge badge-pill badge-primary rounded-circle">4</span>
+            </div>
+            <div class="col-2 p-0 m-0">
+                <button class="btn btn-light btn-icon rounded translate-end" (click)="close()">
+                    <i class="las la-times"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <form [formGroup]="form" class="inn-form" (ngSubmit)="save($event)" novalidate>
+            <div class="form-outline">
+                <small class="color-primary">Ingresa un comentario</small>
+                <textarea class="form-control" id="textAreaExample1" rows="4" placeholder="Máximo 300 caracteres" minlength="5" maxlength="300" formControlName="comments"></textarea>
+            </div>
+            <div class="col">
+                <app-validation-error [form]="form" [field]="'comments'"></app-validation-error>
+            </div>
+            <div class="">
+                <button type="submit" class="btn btn-light position-relative">
+                    <i class="lab la-telegram-plane fs-normal ml-2 "></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row d-flex m-0 p-0 justify-content-between ">
+                    <h5 class="card-title">Miguel </h5><label class="text-muted">28-12-2021</label>
+                </div>
+                <p class="card-text">Mantenimient OK</p>
+                <div class="d-flex justify-content-around pt-4 pointer text-secondary ">
+
+                    <i class="las la-pen fs-normal ml-2 "></i>
+
+                    <i class="las la-trash fs-normal ml-2 "></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<app-modal-confirm #modalConfirm [content]="confirmMessage" (onCloseModal)="onCloseModalConfirm($event)"></app-modal-confirm>

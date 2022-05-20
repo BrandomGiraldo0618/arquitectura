@@ -1,0 +1,26 @@
+agm-map {
+    // height: 390px;
+    height: calc(80vh - 80px);
+    border-radius: 20px;
+}
+
+.card {
+    // height: 390px;
+    height: calc(80vh - 80px);
+    border-radius: 20px;
+    border: 0px solid rgba(0, 0, 0, 0.125);
+}
+
+ul {
+    list-style: none;
+    transition: all 0.3s;
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+agm-map ::ng-deep .agm-map-container-inner {
+    border-radius: 20px;
+}

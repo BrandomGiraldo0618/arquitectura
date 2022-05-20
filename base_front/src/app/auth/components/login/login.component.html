@@ -1,0 +1,32 @@
+<div class="row">
+    <form [formGroup]="form" class="inn-form" (ngSubmit)="login($event)" novalidate>
+        <div class="p-4 b-bottom">
+            <h4 class="text-center color-primary">{{'login.login' | translate}}</h4>
+        </div>
+
+        <div class="p-4 b-bottom">
+            <div class="px-2">
+                <div class="form-group text-center">
+                    <label class="color-primary txt-uppercase">{{'forms.user' | translate}}</label>
+                    <input type="text" placeholder="Ingresa tu usuario" formControlName="email" class="form-control">
+                </div>
+                <div class="form-group text-center">
+                    <label class="color-primary txt-uppercase">{{'forms.password' | translate}}</label>
+                    <input type="password" placeholder="Ingresa tu contraseña" formControlName="password" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4">
+            <div class="px-2">
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-md-12 col-lg-12 mx-auto pl-md-2 order-1 order-md-2">
+                        <button type="submit" class="btn btn-info btn-block" [disabled]="form.invalid">
+							Ingresar
+						</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

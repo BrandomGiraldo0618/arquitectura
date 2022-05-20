@@ -1,0 +1,375 @@
+.x-small {
+    font-size: map-get($font-sizes, x-small);
+    line-height: calc(#{map-get($font-sizes, x-small)} + 4px);
+}
+
+.fs-small {
+    font-size: map-get($font-sizes, small);
+}
+
+.fs-normal {
+    font-size: map-get($font-sizes, normal);
+    line-height: calc(#{map-get($font-sizes, normal)} + 0.2rem);
+}
+
+.fs-big {
+    font-size: map-get($font-sizes, big);
+    line-height: calc(#{map-get($font-sizes, big)} + 0.3rem);
+}
+
+.fs-bigger {
+    font-size: map-get($font-sizes, bigger);
+}
+
+p {
+    margin: 0;
+}
+
+hr {
+    margin: 0.5rem 0;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.color-white {
+    color: $white !important;
+}
+
+.color-gray1 {
+    color: $gray1 !important;
+}
+
+.color-gray2 {
+    color: $gray2 !important;
+}
+
+.color-gray3 {
+    color: $gray3 !important;
+}
+
+.color-gray4 {
+    color: $gray4 !important;
+}
+
+.color-primary {
+    color: $primary-color !important;
+}
+
+.color-secondary {
+    color: $secondary-color !important;
+}
+
+.txt-uppercase {
+    text-transform: uppercase;
+}
+
+.p-medium {
+    padding: 0 3rem;
+}
+
+.b-right {
+    border-right: 1px solid $gray2;
+}
+
+.b-top {
+    border-top: 1px solid $gray2;
+}
+
+.b-left {
+    border-left: 1px solid $gray2;
+}
+
+.b-bottom {
+    border-bottom: 1px solid $gray2;
+}
+
+.underline {
+    border-bottom: 1px solid;
+}
+
+a {
+    &:hover,
+    &.selected {
+        border-bottom: 1px solid;
+        color: $primary-color;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}
+
+.searchbar {
+    align-items: center;
+    background-color: $gray1;
+    border-radius: $border-input;
+    display: none;
+    width: 30%;
+    &.show {
+        display: flex;
+    }
+    span {
+        font-size: 1rem;
+        margin: 0 12px;
+    }
+    input {
+        background-color: initial;
+        border: 0;
+        border-left: 1px solid $gray3;
+        padding: 7px 15px;
+        width: -webkit-fill-available;
+    }
+}
+
+.navbar {
+    background-color: $black-blue;
+    color: $soft-blue;
+}
+
+.nav-link {
+    color: $soft-blue;
+}
+
+.medidor {
+    background-color: $green;
+    width: 40%;
+    height: 500px;
+    float: right;
+    // border-radius: $border1;
+    border-radius: 0px 0px 0px 200px;
+    overflow: hidden;
+    .text_cloud {
+        position: absolute;
+        top: 1.8em;
+        left: 5.3em;
+        p {
+            font-size: 30px;
+        }
+    }
+    .text_aqui_tittle {
+        // position: absolute;
+        top: 7%;
+        left: 57%;
+        p {
+            font-size: 30px;
+        }
+    }
+    .text_aqui_sub_tittle {
+        // position: absolute;
+        top: 15%;
+        left: 57%;
+        p {
+            // font-size: 20px;
+        }
+    }
+    .text_quality_tittle {
+        // position: absolute;
+        top: 4em;
+        // left: 5em;
+        p {
+            font-size: 20px;
+        }
+    }
+    .text_quality_face {
+        // position: absolute;
+        // top: 54%;
+        left: -6%;
+        // position: absolute;
+        // top: 16em;
+        // left: 6em;
+        p {
+            font-size: 4rem;
+        }
+    }
+    .text_quality_p {
+        // position: absolute;
+        top: 23em;
+        left: 5em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        p {
+            font-size: 15px;
+        }
+    }
+}
+
+.face {
+    background-color: $green;
+    width: 140px;
+    height: 140px;
+    float: right;
+    z-index: 0;
+    border-radius: 50%;
+    position: absolute;
+    top: 44%;
+    left: 60%;
+    background-image: url(../../assets/images/icons/face/face_bueno.svg);
+}
+
+.map {
+    width: calc(100% - 4%);
+    height: calc(100vh - 10%);
+    float: right;
+    z-index: -1;
+    border-radius: 0px 0px 0px 480px;
+    position: absolute;
+    left: 4%;
+}
+
+.medidor_map {
+    background-color: $green;
+    width: 100%;
+    height: 500px;
+    float: right;
+    border-radius: $border1;
+    overflow: hidden;
+    .text_cloud {
+        position: absolute;
+        top: 1.8em;
+        left: 4.3em;
+        p {
+            font-size: 30px;
+        }
+    }
+    .text_aqui_tittle {
+        position: absolute;
+        top: 12%;
+        left: 35%;
+        p {
+            font-size: 30px;
+        }
+    }
+    .text_aqui_sub_tittle {
+        position: absolute;
+        top: 25%;
+        left: 34%;
+        p {
+            font-size: 20px;
+        }
+    }
+    .text_quality_tittle {
+        position: absolute;
+        top: 9em;
+        left: 2em;
+        p {
+            font-size: 20px;
+        }
+    }
+    .text_quality_face {
+        // position: absolute;
+        // top: 54%;
+        // left: 30%;
+        position: absolute;
+        top: 14em;
+        left: 6em;
+        p {
+            font-size: 3rem;
+        }
+    }
+    .text_quality_p {
+        position: absolute;
+        top: 23em;
+        left: 0em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        p {
+            font-size: 15px;
+        }
+    }
+}
+
+.face_map {
+    width: 8em;
+    height: 7em;
+    float: left;
+    z-index: 0;
+    border-radius: 50%;
+    // position: absolute;
+    // left: 0em;
+    // top: 14em;
+    .p {
+        font-size: 4rem;
+    }
+}
+
+.face_map_landing {
+    width: 10em;
+    float: right;
+    z-index: 0;
+    border-radius: 50%;
+    position: relative;
+    left: 5em;
+    top: 13em;
+    .p {
+        font-size: 4rem;
+    }
+}
+
+.cloud_map {
+    // background-color: $green;
+    width: 140px;
+    height: 140px;
+    float: right;
+    z-index: 0;
+    position: absolute;
+    left: 3em;
+    top: 1em;
+    background-image: url(../../assets/images/icons/nube_aqi.svg);
+    background-repeat: no-repeat;
+    .p {
+        font-size: 4rem;
+        position: absolute;
+        left: 15%;
+        top: 100px;
+    }
+}
+
+.ul_map {
+    position: absolute;
+    top: 7%;
+    left: 77%;
+}
+
+.more_detail {
+    position: absolute;
+    top: 28em;
+    left: 2em;
+}
+
+.chart_icon {
+    background-color: $white;
+    border-radius: 5px;
+}
+
+.badge-primary {
+    color: $white;
+    background-color: $soft-blue;
+}
+
+.badge {
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.badge_bitacora {
+    top: -27%;
+    left: 8.5em;
+}
+
+.btn .badge_comment {
+    top: -0.7em;
+}
+
+.btn .badge {
+    position: relative;
+    /* top: -1px; */
+}

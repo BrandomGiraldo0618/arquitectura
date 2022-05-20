@@ -1,0 +1,49 @@
+    //-- Buttons
+    .btn {
+        border-radius: $button-border-radius;
+        font-size: $body-size;
+        height: $button-size;
+        padding: 0 1.5rem;
+        min-width: content-box;
+        &.btn-primary {
+            background-color: $blue;
+            border-color: $blue;
+            color: $base-color;
+            &.bordered {
+                background-color: $base-color;
+                color: $primary-color;
+            }
+        }
+        &.btn-default {
+            background-color: $primary-color;
+            border-color: $primary-color;
+            color: $white;
+            &.bordered {
+                background-color: $base-color;
+                color: $white;
+            }
+            span {
+                color: $white;
+                background-color: $primary-color;
+            }
+        }
+        &.btn-info {
+            background-color: $tertiary-color;
+            border-color: $tertiary-color;
+            color: $white;
+            &.bordered {
+                color: $tertiary-color;
+            }
+        }
+        &.btn-icon {
+            align-items: center;
+            display: flex;
+            height: $button-size;
+            justify-content: center;
+            padding: 0;
+            width: $button-size;
+            i {
+                color: $secondary-color;
+            }
+        }
+    }

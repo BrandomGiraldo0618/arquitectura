@@ -1,0 +1,15 @@
+<ng-template #modalConfirm>
+    <div class="modal-header">
+        <h5 class="modal-title text-center">Confirmar</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal(false)">
+      		<span class="lnr lnr-cross"></span>
+    	</button>
+    </div>
+    <div class="modal-body">
+        <p [innerHTML]="_content" class="color-gray3 text-center"></p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary bordered" (click)="closeModal(false)">Cancelar</button>&nbsp;
+        <button type="button" class="btn btn-primary" (click)="closeModal(true)">Aceptar</button>
+    </div>
+</ng-template>

@@ -1,0 +1,17 @@
+//-- Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+//-- Line awesome
+@import "node_modules/line-awesome/dist/line-awesome/scss/line-awesome";
+//-- ngx-datatable
+@import "node_modules/@swimlane/ngx-datatable/index";
+@import "node_modules/@swimlane/ngx-datatable/themes/material";
+@import "node_modules/@swimlane/ngx-datatable/themes/dark";
+@import "node_modules/@swimlane/ngx-datatable/themes/bootstrap";
+@import "node_modules/@swimlane/ngx-datatable/assets/icons";
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss";
+@import 'utilities/utilities';
+@import 'pages/pages';
+@import 'base/base';
+@import 'layout/layout';
+@import 'components/components';
+@import 'responsive/responsive';

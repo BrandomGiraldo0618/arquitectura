@@ -1,0 +1,130 @@
+
+.container-drawer {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: all ease-in-out .4s;
+
+  &--menu {
+    transform: translateX(-100%);
+  }
+
+  &--user {
+    transform: translateX(100%);
+
+    .info-user {
+      &__avatar {
+        background: $primary-color;
+        border-radius: $border3;
+      }
+    }
+  }
+
+  .drawer {
+    z-index: 10;
+    position: relative;
+    padding: 20px 20px 20px 25px;
+    width: 84.5%;
+    box-shadow: $shadow1;
+
+    &-user {
+      float: right;
+      right: 0;
+    }
+
+    .la-long-arrow-alt-left, .la-long-arrow-alt-right {
+      background: $gray1;
+      border-radius: 5px;
+      padding: 3.5px;
+      font-size: 1.5rem;
+      color: #2D2D2D;
+    }
+    .item-menu-text {
+      font-size: 16px;
+      font-family: "Poppins-regular";
+      color: #989898;
+      font-weight: 400;
+      margin-left: 15px;
+    }
+
+    .items-menu {
+      list-style: none;
+      padding: 0;
+
+      i {
+        font-size: 1.5rem;
+        margin-left: 0px;
+        color: #DBDBDB;
+      }
+    }
+  }
+
+  .drawer-overlay {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+
+
+
+@include media-breakpoint-down(sm)  {
+  .header-top {
+    background-color: #fff;
+    box-shadow: $shadow1;
+    padding: 15px 25px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+
+    .la-bars {
+      font-size: 1.5rem;
+      color: #4C4C9F;
+    }
+
+    nav{
+      .nav-menu {
+        div {
+          display: flex;
+          align-items: center;
+        }
+        i {
+          font-size: 1.5rem;
+          margin-left: 0px;
+          color: #4C4C9F;
+        }
+        span {
+          color: $secondary-color;
+          font-family: 'Poppins-regular';
+          font-size: 16px;
+        }
+      }
+    }
+
+    .options {
+      .la-bell {
+        background: $gray1;
+        border-radius: 5px;
+        padding: 6px;
+        font-size: 1.2rem;
+        color: #2D2D2D;
+      }
+      .la-user {
+        background: $secondary-color;
+        border-radius: 5px;
+        padding: 6px;
+        font-size: 1.2rem;
+        color: $white;
+        margin-left: 10px;
+      }
+    }
+  }
+}

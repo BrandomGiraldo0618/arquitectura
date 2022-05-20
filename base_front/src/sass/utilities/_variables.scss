@@ -1,0 +1,62 @@
+//-- Colors
+$white: #fff;
+$black: #000;
+$black-light:#062536;
+$purple: #4C4C9F;
+$purple-light: #ACACEA;
+$blue: #c00d0d;
+$soft-blue: #c24949;
+$black-blue: #0F4561;
+$blue-light: #60E5D4;
+$green: #90E383;
+$yellow: #F2D149;
+$red: #F26363;
+//-- Theme Colors
+$base-color: $white;
+$primary-color: $soft-blue;
+$secondary-color: $purple;
+$tertiary-color: $blue;
+//-- States
+$info: $blue-light;
+$success: $green;
+$warning: $yellow;
+$danger: $red;
+//-- Grays scale
+$gray1: #F6F6F6;
+$gray2: #DBDBDB;
+$gray3: #989898;
+$gray4: #2D2D2D;
+//-- Borders
+$border1: 5px;
+$border2: 7px;
+$border3: 10px;
+$border4: 20px;
+//-- Body styles
+$body-size: 14px;
+$body-color: $gray4;
+//-- Shadows
+$shadow1: 0px 0px 20px #0000000D;
+$shadow2: 5px 0px 15px #0000000D;
+$shadow3: 0px 4px 10px #0000001F;
+//-- Borders
+$border-box: $border3;
+//-- Forms
+$bg-input: $gray1;
+$border-input: $border1;
+$hg-input: 2.3rem;
+//-- Buttons
+$button-border-radius: $border1;
+$button-size: 2rem;
+//-- Layout admin
+$menu-width: 240px;
+$header-height: 55px;
+$menu-width-xs: 50px;
+$layout-padding: 1.8rem;
+$font-sizes: ( bigger: 4rem, //-- used
+big: 2.5rem, //-- used
+normal: 1.2rem, //-- used
+small: 1rem, x-small: 11px //-- used
+);
+//-- Sidebars
+$sidebar-width: calc(#{$menu-width} + 4rem);
+$sidebar-width-lg: 320px;

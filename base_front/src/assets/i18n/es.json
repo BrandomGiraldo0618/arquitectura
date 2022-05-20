@@ -1,0 +1,41 @@
+{
+    "login": {
+        "login": "Ingreso",
+        "register": "Registro",
+        "welcome": "¡Nos alegra verte de nuevo!",
+        "no_account": "Aún no tienes una cuenta?",
+        "sign_up": "Regístrate!",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "confirm_password": "Confirmar Contraseña",
+        "forgot": "Olvidaste tu contraseña?",
+        "lets_create": "Crea tu cuenta!",
+        "client": "Cliente",
+        "provider": "Proveedor",
+        "login_and_register": "Ingreso y Registro",
+        "register_panel": "Panel de registro",
+        "recover_password": "Recuperar contraseña",
+        "reset_password": "Restablecer contraseña"
+    },
+    "forms": {
+        "user": "Usuario",
+        "user_name": "Nombre de usuario",
+        "password": "Contraseña",
+        "name": "Nombre",
+        "lastname": "Apellido",
+        "department": "Departamento",
+        "city": "Ciudad",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "confirm_password": "Confirmar contraseña"
+    },
+    "INPUT": {
+        "EMAIL": "Ingresa tu correo electrónico",
+        "PASSWORD": "Ingresa tu clave de acceso",
+        "NEW_PASSWORD": "Ingresa tu nueva contraseña",
+        "FULLNAME": "Nombre completo",
+        "CONFIRM_PASSWORD": "Confirmar Contraseña",
+        "CONFIRM_EMAIL": "Confirma tu correo electrónico",
+        "USERNAME": "Usuario"
+    }
+}

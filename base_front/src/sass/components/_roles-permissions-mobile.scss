@@ -1,0 +1,104 @@
+.roles-permissions-bottom {
+  margin-top: 12rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 25px 25px 25px 25px;
+
+  .roles-permissions-bottom-head {
+    padding-bottom: 11px;
+
+    .arrow-back .la-long-arrow-alt-left {
+      background: $gray1;
+      border-radius: $border1;
+      padding: 3.5px;
+      font-size: 1.5rem;
+      color: #2D2D2D;
+    }
+
+    .txt-bottom {
+      color: $secondary-color;
+      margin-left: 16px;
+      margin-right: 10px;
+    }
+  }
+
+  .divisor {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .roles-permissions-bottom-body {
+    padding: 20px 0;
+
+    .txt-bottom-body {
+      font-size: 15px;
+      color: #989898;
+    }
+
+    .arrow-collapse .la-angle-right {
+      font-size: 1rem;
+      color: #000000;
+      transition: all ease-in-out .3s;
+    }
+
+    .box-permissions-list {
+      list-style: none;
+      height: 0;
+      overflow-y: hidden;
+      transition: all ease-in-out .3s;
+      width: 100%;
+      margin-bottom: 0;
+      padding-left: 15px;
+      padding-right: 25px;
+
+      &.active {
+        height: auto;
+        margin: 21px 0px 32px 0px;
+      }
+
+      .permission-name {
+        color: #989898;
+        font-size: 14px;
+        z-index: 1;
+        padding-right: 5px;
+      }
+
+      li {
+        position: relative;
+        margin-bottom: 10px;
+      }
+
+      li:before {
+        background-color: $gray2;
+        bottom: 3px;
+        content: "";
+        height: 1px;
+        left: 5%;
+        position: absolute;
+        width: 82%;
+      }
+    }
+
+    .item-select {
+      padding: 10px 25px 10px 15px;
+      transition: all ease-in-out .3s;
+      cursor: pointer;
+    }
+
+    .active-arrow {
+      transform: rotate(90deg);
+    }
+
+    .selected {
+      border-radius: 5px;
+      background-color: #F9F9F9;
+      padding: 10px 25px 10px 15px;
+    }
+
+    .selected .txt-bottom-body {
+      color: #2D2D2D;
+    }
+  }
+}

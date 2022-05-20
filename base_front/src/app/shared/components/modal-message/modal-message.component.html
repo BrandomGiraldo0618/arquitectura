@@ -1,0 +1,15 @@
+<ng-template #modalMessage>
+    <div class="modal-header">
+        <span class="lnr lnr-cross-circle icon-message error" *ngIf="_type == 'error'"></span>
+        <span class="lnr lnr-checkmark-circle icon-message success" *ngIf="_type == 'success'"></span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      		<span class="lnr lnr-cross"></span>
+    	</button>
+    </div>
+    <div class="modal-body">
+        <p [innerHTML]="_content" class="color-gray3 text-center"></p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="closeModal()">Aceptar</button>
+    </div>
+</ng-template>

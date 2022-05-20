@@ -1,0 +1,90 @@
+<div class="info d-sm-block d-none">
+    <div class="row align-items-center">
+        <div class="col-lg-9">
+            <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center b-right mr-4 pr-4">
+                    <!-- <i class="las la-user color-primary fs-big mr-3"></i> -->
+                    <p class="semibold color-primary fs-normal nowrap">Nuevo Partido</p>
+                </div>
+                <p class="color-gray3 x-small">Desde este Panel puedes asignar los datos para un nuevo partido. Todos los campos marcados con (*) son obligatorios.</p>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="d-flex justify-content-end pr-4">
+                <button class="btn btn btn-light btn--icon" (click)="location.back();">
+					<i class="las la-times fs-normal mr-2"></i> Cancelar Creación
+				</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="create-user-top position-absolute bg-white d-sm-none d-block">
+        <div class="d-flex d-sm-none justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="arrow-back d-flex pointer">
+                    <i class="las la-long-arrow-alt-left" (click)="location.back()"></i>
+                </div>
+            </div>
+            <div class="d-flex">
+                <span class="txt-top mx-3">Nuevo Partido</span>
+            </div>
+            <button class="btn btn-primary btn-create">
+				Crear
+			</button>
+        </div>
+
+        <div class="tabs d-flex justify-content-center align-items-center">
+            <span class="txt-tab">Información</span>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column px-4">
+        <div class="container-form mt-3 w-100 bg-white">
+            <form [formGroup]="form" class="inn-form" (ngSubmit)="save($event)" novalidate>
+                <div class="first-section max-width-form m-auto">
+                    <p class="color-primary f-subtitle fs-normal">Partido</p>
+                </div>
+                <hr class="m-0">
+                <div class="form-data form-data-grid max-width-form m-auto">
+                    <div class="form-input">
+                        <label for="nombre" class="label-input">Nombre Partido *</label>
+                        <input type="text" class="form-control" placeholder="Ingresar nombre" id="nombre" formControlName="nombre">
+                        <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="personaId_Rlegal" class="label-input">Representante Legal *</label>
+                        <select class="form-control" id="personaId_Rlegal" formControlName="personaId_Rlegal" aria-placeholder="Seleccionar">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="{{representante.id}}" *ngFor="let representante of representantes">{{representante.numero_Documento}} - {{representante.nombre}} {{representante.apellido}}</option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'personaId_Rlegal'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="listaA_C" class="label-input">Tipo de Lista *</label>
+                        <select class="form-control" id="listaA_C" formControlName="listaA_C" aria-placeholder="Seleccionar">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="{{lista.id}}" *ngFor="let lista of listas">{{lista.nombre}}</option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'listaA_C'"></app-validation-error>
+                    </div>
+                </div>
+
+                <div class="container-buttons d-flex justify-content-center align-items-center bg-white w-100 mt-5">
+                    <div class="py-3">
+                        <button type="button" class="btn btn-light mr-4" (click)="location.back()">
+                            <span class="d-none d-md-block">Cancelar</span>
+                            <span class="d-md-none">Cancelar</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="d-none d-md-block">Guardar Partido</span>
+                            <span class="d-md-none">Crear</span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

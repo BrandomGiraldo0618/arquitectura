@@ -1,0 +1,38 @@
+[
+    {
+        "i_high": 50,
+        "i_low": 0,
+        "pc_high": 12,
+        "pc_low": 0
+    },
+    {
+        "i_high": 100,
+        "i_low": 51,
+        "pc_high": 37,
+        "pc_low": 13
+    },
+    {
+        "i_high": 150,
+        "i_low": 101,
+        "pc_high": 55,
+        "pc_low": 38
+    },
+    {
+        "i_high": 200,
+        "i_low": 151,
+        "pc_high": 150,
+        "pc_low": 56
+    },
+    {
+        "i_high": 300,
+        "i_low": 201,
+        "pc_high": 250,
+        "pc_low": 151
+    },
+    {
+        "i_high": 500,
+        "i_low": 301,
+        "pc_high": 500,
+        "pc_low": 251
+    }
+]

@@ -1,0 +1,61 @@
+.box {
+    background-color: $white;
+    border-radius: $border3;
+    //overflow: hidden;
+    &--permissions {
+        &__permission {
+            align-items: center;
+            border-radius: $border1;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 10px;
+        }
+        &__list {
+            display: none;
+            list-style: none;
+            margin: 5px 1.5rem;
+            padding: 5px 0;
+            li {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                &:before {
+                    background-color: $gray2;
+                    bottom: 5px;
+                    content: "";
+                    height: 1px;
+                    left: 5%;
+                    position: absolute;
+                    width: 92%;
+                }
+                .category-name,
+                .onoffswitch {
+                    background-color: $base-color;
+                    z-index: 1;
+                }
+                .category-name {
+                    padding-right: 5px;
+                }
+            }
+        }
+        .active {
+            .box--permissions__permission {
+                background-color: $gray1;
+                color: $gray4;
+            }
+            .box--permissions__list {
+                display: block;
+            }
+        }
+    }
+    &--pagination {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        span {
+            width: 7rem;
+            white-space: nowrap;
+        }
+    }
+}

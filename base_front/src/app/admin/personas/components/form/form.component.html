@@ -1,0 +1,147 @@
+<div class="info d-sm-block d-none">
+    <div class="row align-items-center">
+        <div class="col-lg-9">
+            <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center b-right mr-4 pr-4">
+                    <!-- <i class="las la-user color-primary fs-big mr-3"></i> -->
+                    <p class="semibold color-primary fs-normal nowrap">Nueva funcionario</p>
+                </div>
+                <p class="color-gray3 x-small">Desde este Panel puedes asignar los datos para un nuevo funcionario . Todos los campos marcados con (*) son obligatorios.</p>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="d-flex justify-content-end pr-4">
+                <button class="btn btn btn-light btn--icon" (click)="location.back();">
+					<i class="las la-times fs-normal mr-2"></i> Cancelar
+				</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="create-user-top position-absolute bg-white d-sm-none d-block">
+        <div class="d-flex d-sm-none justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="arrow-back d-flex pointer">
+                    <i class="las la-long-arrow-alt-left" (click)="location.back()"></i>
+                </div>
+            </div>
+            <div class="d-flex">
+                <span class="txt-top mx-3">Nueva funcionario</span>
+            </div>
+            <button class="btn btn-primary btn-create">
+				Crear
+			</button>
+        </div>
+
+        <div class="tabs d-flex justify-content-center align-items-center">
+            <span class="txt-tab">Información</span>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column px-4">
+        <div class="container-form mt-3 w-100 bg-white">
+            <form [formGroup]="form" class="inn-form" (ngSubmit)="save($event)" novalidate>
+                <div class="first-section max-width-form m-auto">
+                    <p class="color-primary f-subtitle fs-normal">Funcionario</p>
+                </div>
+                <hr class="m-0">
+                <div class="form-data form-data-grid max-width-form m-auto">
+                    <div class="form-input">
+                        <label for="tipo_Documento" class="label-input">Tipo de  Documento *</label>
+                        <select class="form-control" id="tipo_Documento" formControlName="tipo_Documento" aria-placeholder="Seleccionar">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="CC" >Cedula de Ciudadania</option>
+                            <option value="TI" >Tarjeta de Identidad </option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'tipo_Documento'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="numero_Documento" class="label-input">Numero de Documento*</label>
+                        <input type="text" class="form-control" placeholder="Ingresar Numero Documento" id="numero_Documento" formControlName="numero_Documento">
+                        <app-validation-error [form]="form" [field]="'numero_Documento'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="nombre" class="label-input">Nombre *</label>
+                        <input type="text" class="form-control" placeholder="Ingresar nombre" id="nombre" formControlName="nombre">
+                        <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="apellido" class="label-input">Apellido *</label>
+                        <input type="text" class="form-control" placeholder="Ingresar Apellido " id="apellido" formControlName="apellido">
+                        <app-validation-error [form]="form" [field]="'apellido'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="lugar_Nacimiento" class="label-input">Lugar de Nacimiento</label>
+                        <input type="text" class="form-control" placeholder="Ingresar lugar de Nacimiento" id="lugar_Nacimiento" formControlName="lugar_Nacimiento">
+                        <app-validation-error [form]="form" [field]="'lugar_Nacimiento'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="fecha_Nacimiento" class="label-input">Fecha de Nacimiento *</label>
+                        <input type="date" class="form-control" placeholder="Ingresar Fecha de Nacimiento" id="fecha_Nacimiento" formControlName="fecha_Nacimiento">
+                        <app-validation-error [form]="form" [field]="'fecha_Nacimiento'"></app-validation-error>
+                    </div>
+                    <div class="form-input">
+                        <label for="tipo_funcionario" class="label-input">Tipo de funcionario *</label>
+                        <select class="form-control" id="tipo_funcionario" formControlName="tipo_funcionario" aria-placeholder="Seleccionar" (change)="TipoFuncinarioChange()">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="1" >Votante</option>
+                            <option value="2" >Jurado </option>
+                            <option value="3" >Candidato</option>
+                            <option value="4" >Representante legal</option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'tipo_funcionario'"></app-validation-error>
+                    </div>
+                    <div class="form-input" *ngIf="votante == true || jurado == true">
+                        <label for="punto_votacion_id" class="label-input">Punto de votacion *</label>
+                        <select class="form-control" id="punto_votacion_id" formControlName="punto_votacion_id" aria-placeholder="Seleccionar" (change)="getMesas()">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="{{punto_votacion.id}}" *ngFor="let punto_votacion of puntos_votaciones">{{punto_votacion.nombre}}</option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'punto_votacion_id'"></app-validation-error>
+                    </div>
+                    <div class="form-input" *ngIf="votante == true || jurado == true">
+                        <label for="mesa_id" class="label-input">Mesa *</label>
+                        <select class="form-control" id="mesa_id" formControlName="mesa_id" aria-placeholder="Seleccionar">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="{{mesa.id}}" *ngFor="let mesa of mesas">{{mesa.nombre}}</option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'mesa_id'"></app-validation-error>
+                    </div>
+                    <div class="form-input" *ngIf="candidato">
+                        <label for="partido_id" class="label-input">Partido *</label>
+                        <select class="form-control" id="partido_id" formControlName="partido_id" aria-placeholder="Seleccionar">
+                                <option value="" selected>Seleccionar</option>
+                                <option value="{{partido.id}}" *ngFor="let partido of partidos">{{partido.nombre}}</option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'partido_id'"></app-validation-error>
+                    </div>
+
+                    <div class="form-input" *ngIf="candidato">
+                        <label for="tipo_candidato_id" class="label-input">Tipo de candidato *</label>
+                        <select class="form-control" id="tipo_candidato_id" formControlName="tipo_candidato_id" aria-placeholder="Seleccionar">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="{{tipo_candidato.id}}" *ngFor="let tipo_candidato of tipos_candidatos">{{tipo_candidato.nombre}}</option>
+                        </select>
+                        <app-validation-error [form]="form" [field]="'tipo_candidato_id'"></app-validation-error>
+
+                    </div>
+                </div>
+
+                <div class="container-buttons d-flex justify-content-center align-items-center bg-white w-100 mt-5">
+                    <div class="py-3">
+                        <button type="button" class="btn btn-light mr-4" (click)="location.back()">
+                            <span class="d-none d-md-block">Cancelar</span>
+                            <span class="d-md-none">Cancelar</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="d-none d-md-block">Guardar funcionario</span>
+                            <span class="d-md-none">Crear</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

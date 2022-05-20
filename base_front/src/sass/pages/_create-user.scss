@@ -1,0 +1,85 @@
+.create-user-top {
+  padding: 96px 25px 0px 25px;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.arrow-back .la-long-arrow-alt-left {
+  background: $gray1;
+  border-radius: $border1;
+  padding: 3.5px;
+  font-size: 1.5rem;
+  color: #2D2D2D;
+}
+
+.txt-top {
+  font-size: 15px;
+  color: $gray4;
+}
+
+.tabs {
+  padding-top: 40px;
+  padding-bottom: 19px;
+
+  .txt-tab {
+    font-family: "Lato-Regular";
+    font-size: 14px;
+    color: #989898;
+  }
+}
+
+.container-form {
+  border-radius: $border3;
+
+  .max-width-form {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .first-section {
+    padding: 20px;
+  }
+
+  .form-data {
+    padding: 25px 20px 20px 20px;
+
+    &-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .form-input .form-control{
+      background-color: $bg-input;
+      border-color: $bg-input;
+      border-radius: $border1;
+      font-size: 15px;
+      height: 2.5rem;
+      font-family: 'Poppins-regular';
+      padding-left: 20px;
+    }
+
+    .form-input .form-control::placeholder {
+      color: #989898;
+    }
+
+    .form-input {
+      margin-bottom: 20px;
+      position: relative;
+
+      .label-input {
+        color: $primary-color;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .container-form {
+    .form-data-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

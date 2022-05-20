@@ -1,0 +1,175 @@
+<div class="info" [class.info--form]="showForm">
+    <div class="row align-items-center" [class.pb-3]="showForm">
+        <div class="col-lg-9 d-none d-md-block">
+            <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center b-right mr-4 pr-4">
+                    <i class="lar la-id-badge color-primary fs-big mr-3"></i>
+                    <p class="f-subtitle color-primary fs-normal nowrap">ROLES Y PERMISOS</p>
+                </div>
+                <p class="color-gray3 x-small">Desde aquí puedes otorgar los diferentes permisos de acceso a los roles de la plataforma. Selecciona alguno para administrar sus permisos.</p>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="pr-md-4">
+                <div class="row d-flex justify-content-md-end justify-content-between align-items-center">
+                    <span class="d-md-none color-primary fs-normal"><b>18</b> entradas</span>
+                    <button class="btn btn-primary btn--icon px-4" *ngIf="singleton.hasPermission(['create_permissions']) && !showForm" (click)="showForm = true">
+						<i class="las la-plus fs-normal mr-2 text-white"></i> Nuevo Rol
+					</button>
+
+                    <button class="btn btn-light btn--icon px-4" *ngIf="showForm" (click)="cancelCreate()">
+						<i class="las la-times fs-normal mr-2"></i> Cancelar Creación
+					</button>
+                </div>
+                <div class="row mt-3 d-md-none ">
+                    <div class="searchbar show w-100">
+                        <span class="las la-search"></span>
+                        <input type="search" [placeholder]="placeholderSearch">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="showForm">
+        <form class="inn-form" [formGroup]="form" (ngSubmit)="save($event)" novalidate>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center">
+                        <span class="color-gray3 x-small mr-3 space-nowrap">Nombre de Rol</span>
+                        <div class="form-group mb-0 width-available">
+                            <input type="text" class="form-control" placeholder="Ingresa nombre de rol" formControlName="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-none">
+                    <div class="d-flex align-items-center">
+                        <span class="color-gray3 x-small mr-3 space-nowrap">Tipo</span>
+                        <div class="form-group mb-0 width-available">
+                            <select class="form-control" formControlName="type">
+								<option value="3">Ninguno</option>
+								<option value="1">Local</option>
+								<option value="2">Establecimiento</option>
+							</select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group mb-0">
+                        <div class="d-flex align-items-center">
+                            <label class="mr-3 color-gray3 x-small">Rol Activo / Inactivo</label>
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="status-role" class="onoffswitch-checkbox" id="status-role" tabindex="0" formControlName="status">
+                                <label class="onoffswitch-label" for="status-role">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn btn-primary square btn-block">Crear Rol</button>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</div>
+
+<div class="row" *ngIf="!isPermissionActive">
+    <div class="col-lg-6 pr-lg-2 h-100 px-0">
+        <div class="box h-100 pl-3">
+            <div class="table-responsive">
+                <table class="table table-borderless no-border-top">
+                    <thead>
+                        <tr>
+                            <th class="color-primary title-regular">Nombre Rol</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let role of roles; let i = index" [class.selected]="selectedRole == role.id">
+
+                            <td (click)="selectRole(role.id)">{{role.name}}</td>
+                            <td class="options">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <!-- <div class="onoffswitch mr-2">
+										<input type="checkbox" name="statusr{{i}}" class="onoffswitch-checkbox" id="statusr{{i}}" tabindex="0" >
+										<label class="onoffswitch-label mb-0" for="statusr{{i}}" (click)="changeStatus(role.id)">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch"></span>
+										</label>
+									</div> -->
+                                    <a href="javascript:;" class="mr-2" (click)="editRole(role)" *ngIf="singleton.hasPermission(['update_permissions'])" tooltip="Editar">
+                                        <i class="las la-pen"></i>
+                                    </a>
+                                    <a href="javascript:;" class="mr-2" (click)="confirmDelete(role.id)" *ngIf="singleton.hasPermission(['delete_permissions'])" tooltip="Eliminar">
+                                        <i class="las la-trash"></i>
+                                    </a>
+                                    <!-- <a href="javascript:;" (click)="togglePermissions()" class="d-md-none">
+										<i class="las la-eye"></i>
+									</a> -->
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 pl-lg-2 h-100 d-none d-md-block">
+        <div class="box box--permissions h-100">
+            <div class="table-responsive">
+                <table class="table table-borderless no-border-top">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="color-primary title-regular">Tipo de permiso</th>
+                            <th class="x-small color-gray3">Despliega cada permiso y administra sus estados</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let section of sections; let i = index" [class.active]="section.section == selectedSection">
+                            <td></td>
+                            <td colspan="2">
+                                <div class="box--permissions__permission" (click)="selectedSection = section.section">
+                                    {{section.section}}
+                                    <i class="las la-angle-down"></i>
+                                </div>
+                                <ul class="box--permissions__list">
+                                    <li>
+                                        <span class="permission-name">Todos los permisos</span>
+                                        <div class="onoffswitch">
+                                            <input type="checkbox" name="status-all{{i}}{{j}}" class="onoffswitch-checkbox" id="status-all{{i}}{{j}}" tabindex="0" (change)="changePermissionsSection(section, i)" [checked]="section.allowed === section.permissions.length">
+                                            <label class="onoffswitch-label mb-0" for="status-all{{i}}{{j}}">
+												<span class="onoffswitch-inner"></span>
+												<span class="onoffswitch-switch"></span>
+											</label>
+                                        </div>
+                                    </li>
+
+                                    <li *ngFor="let permission of section.permissions; let j = index">
+                                        <span class="permission-name">{{permission.name}}</span>
+                                        <div class="onoffswitch">
+                                            <input type="checkbox" name="status-permission{{i}}{{j}}" class="onoffswitch-checkbox" id="status-permission{{i}}{{j}}" tabindex="0" [checked]="permission.allowed" (change)="changePermissions(permission, i, j)">
+                                            <label class="onoffswitch-label mb-0" for="status-permission{{i}}{{j}}">
+												<span class="onoffswitch-inner"></span>
+												<span class="onoffswitch-switch"></span>
+											</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-index-mobile class="d-sm-none d-block" *ngIf="isPermissionActive" [isPermissionActive]="isPermissionActive" (isPermissionActiveOut)="getPermissionActive($event)"></app-index-mobile>
+
+<app-modal-confirm #modalConfirm [content]="confirmMessage" (onCloseModal)="onCloseModalConfirm($event)"></app-modal-confirm>

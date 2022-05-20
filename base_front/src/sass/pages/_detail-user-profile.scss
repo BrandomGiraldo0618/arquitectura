@@ -1,0 +1,170 @@
+.detail-user-profile-top {
+  padding: 96px 25px 20px 25px;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  .arrow-back .la-long-arrow-alt-left {
+    background: $gray1;
+    border-radius: $border1;
+    padding: 3px;
+    font-size: 1.5rem;
+    color: $black;
+  }
+
+  .container-icons-top {
+
+    .la-trash-alt, .la-edit {
+      font-size: 1.5rem;
+      color: #989898;
+    }
+
+    .icons-top:first-child {
+      top: 2px;
+    }
+
+    .onoffswitch-inner:before {
+      background-color: $blue;
+      opacity: 0.3;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+      background-color: $blue !important;
+    }
+  }
+}
+
+.main-container-data {
+  margin: 9.2rem 25px 25px;
+}
+
+.first-container-data {
+  border-radius: $border3;
+  position: relative;
+
+  .first-container-items-data {
+    padding: 15px 0px;
+
+    .number-publications {
+      right: 0;
+      padding-right: 1rem;
+    }
+
+    .container-user-image {
+      background-color: $secondary-color;
+      border-radius: $border3;
+
+      .la-user {
+        font-size: 4.2rem;
+      }
+    }
+
+    .container-user-progress {
+      padding: 20px 16px;
+      position: relative;
+      border-radius: 50%;
+      border: 2px solid #f2d1494f;
+    }
+
+    .container-user-progress:before {
+      content : "";
+      position: absolute;
+      border: 3px solid $yellow;
+      border-radius: 50%;
+      left: -3px;
+      right: -3px;
+      top: -3px;
+      bottom: -3px;
+    }
+
+    .txt-progress {
+      color: $yellow;
+      max-width: 70px;
+    }
+
+    .txt-progress:first-child {
+      font-size: 19px;
+    }
+
+    .txt-publications {
+      color: $success;
+      max-width: 100px;
+    }
+
+    .la-font-awesome-flag {
+      color: $success;
+      font-size: 3.3rem;
+    }
+
+    .txt-last {
+      color: #60E5D4;
+      max-width: 140px;
+      border-left: 2px solid #60E5D4;
+      height: 40px;
+    }
+
+    .la-list-ul {
+      color: #60E5D4;
+      font-size: 2rem;
+    }
+  }
+
+  .second-container-items-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .6rem;
+
+    .gallery {
+      background: $gray2;
+      aspect-ratio: 1/1;
+      width: 100%;
+      border-radius: $border1;
+
+      .la-image {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .items-data {
+    background-color: $gray1;
+    padding: 10px 20px;
+    border-radius: $border1;
+    margin-bottom: 5px;
+
+    .txt-data {
+      color: #989898;
+    }
+
+    .txt-data-second {
+      color: $black;
+
+      .txt-dot {
+        line-height: 0;
+        position: relative;
+        top: 7px;
+      }
+    }
+  }
+}
+
+.txt-subtitle, .txt-last, .txt-publications, .txt-progress, .txt-time {
+  font-size: 14px;
+}
+
+.container-time {
+  max-width: 150px;
+
+  .txt-time:first-child {
+    font-size: 30px;
+  }
+}
+
+
+@include media-breakpoint-up(md) {
+  .first-container-data {
+    .second-container-items-data {
+      gap: 1rem;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<ng-template #modalImport>
+    <div class="modal-header">
+        <span class="lnr lnr-cross-circle icon-message error" *ngIf="_type == 'error'"></span>
+        <span class="lnr lnr-checkmark-circle icon-message success" *ngIf="_type == 'success'"></span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      		<span class="lnr lnr-cross"></span>
+    	</button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="col">
+                <div class="row justify-content-center mb-3">
+                    <a href="javascript:;" (click)="downloadExcel()">Descargar plantilla Excel</a>
+                </div>
+                <div class="row">
+                    <label for="file" class="form-label">Cargar Ordenes</label>
+                    <input class="form-control" #file required id="file" multiple type="file">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary bordered" (click)="closeModal(false)">Cancelar</button>&nbsp;
+        <button type="button" class="btn btn-primary" (click)="uploadFile()">Cargar Ordenes</button>
+    </div>
+</ng-template>

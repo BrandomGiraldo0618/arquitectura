@@ -1,0 +1,119 @@
+<div class="row">
+	<form [formGroup]="form" class="inn-form" (ngSubmit)="save($event)" novalidate>
+		<div class="p-4 b-bottom">
+			<div class="d-flex align-items-center px-2">
+				<a href="javascript:;" routerLink="/auth/login" class="btn btn-icon btn-default">
+					<i class="las la-arrow-left color-gray4"></i>
+				</a>
+				<h6 class="text-center color-primary ml-3 semibold">{{'login.register_panel' | translate}}</h6>
+			</div>
+		</div>
+
+		<div class="p-4 b-bottom">
+			<div class="px-2">
+				<p class="color-gray3 mb-2">Ingresa los datos correspondientes para el formulario de registro.</p>
+				<p class="x-small">Los campos marcados con (*) son obligatorios.</p>
+			</div>
+		</div>
+
+		<div class="p-4 b-bottom">
+			<div class="px-2">
+				<div class="form-group text-center">
+					<label class="color-primary">{{'forms.user_name' | translate}}*</label>
+					<input type="text" placeholder="Ingresa tu nombre" formControlName="name" class="form-control">
+				</div>
+
+				<div class="form-group text-center">
+					<label class="color-primary">{{'forms.lastname' | translate}}</label>
+					<input type="text" placeholder="Ingresa tu apellido" formControlName="lastname" class="form-control">
+				</div>
+
+				<div class="form-group text-center">
+					<label class="color-primary">{{'forms.department' | translate}}*</label>
+					<select  class="form-control" formControlName="department_id">
+						<option value="">{{'forms.department' | translate}}</option>
+					</select>
+				</div>
+
+				<div class="form-group text-center">
+					<label for="department" class="color-primary">{{'forms.department' | translate}}*</label>
+					<select  id="department" formControlName="departmentC" class="form-control">
+						<option selected>Seleccionar</option>
+						<option>Meta</option>
+						<option>Cundinamarca</option>
+					</select>
+				</div>
+
+				<div class="form-group text-center">
+					<label for="city" class="color-primary">{{'forms.city' | translate}}*</label>
+					<select  id="city" formControlName="cityC" class="form-control">
+						<option selected>Seleccionar</option>
+						<option>Villavicencio</option>
+						<option>Bogota</option>
+					</select>
+				</div>
+
+				<div class="form-group text-center">
+					<label class="color-primary">{{'forms.password' | translate}}</label>
+					<input type="password" placeholder="Minimo 6 caracteres" formControlName="password" class="form-control">
+				</div>
+
+				<div class="form-group text-center">
+					<label class="color-primary">{{'forms.confirm_password' | translate}}</label>
+					<input type="password" placeholder="Minimo 6 caracteres" formControlName="confirm_password" class="form-control">
+				</div>
+			</div>
+		</div>
+
+		<div class="p-4 b-bottom">
+			<div class="px-2">
+				<p class="text-gray3">Prueba registrarte con alguna de las siguientes cuentas:</p>
+				<div class="d-flex flex-column">
+					<button type="submit" class="btn btn-primary bordered mt-4">
+						<img src="./assets/images/icons/facebook.png" alt="facebook" class="mr-3" width="20">
+						Ingresar con Facebook
+					</button>
+					<button type="submit" class="btn btn-primary bordered mt-3">
+						<img src="./assets/images/icons/google.png" alt="google" class="mr-3" width="20">
+						Ingresar con Google
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="p-4 b-bottom">
+			<div class="px-2">
+				<label for="check-conditions" class="container-check mb-3">
+					<input type="checkbox" name="check-conditions" id="check-conditions"> <small class="ml-3">Acepto que he leído y apruebo los Términos y Condiciones del Servicio</small>
+					<span class="checkmark"></span>
+				</label>
+
+				<label for="check-politics" class="container-check">
+					<input type="checkbox" name="check-politics" id="check-politics"> <small class="ml-3">Acepto que he leído y apruebo La Política de Tratamiento de Datos</small>
+					<span class="checkmark"></span>
+				</label>
+			</div>
+		</div>
+
+		<div class="p-4">	
+			<div class="px-2">
+				<div class="row my-2">
+					<div class="col-md-6 pr-lg-2 mb-2">
+						<button type="button" 
+								class="btn btn-default btn-block"
+								routerLink="/auth/login">
+							Iniciar sesión
+						</button>
+					</div>
+					<div class="col-md-6 pl-lg-2">
+						<button type="submit" 
+								class="btn btn-info btn-block"
+								[disabled]="form.invalid">
+								Crear registro
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

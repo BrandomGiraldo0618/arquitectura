@@ -1,0 +1,30 @@
+.drop-container
+{
+  background: #F0F0F7 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 130px !important;
+  width: 100% !important;
+  outline-offset: -8px !important;
+  margin-bottom: 20px;
+
+  .upload-button {
+    display: inline-block !important;
+    border: none !important;
+    outline: 0 !important;
+    cursor: pointer !important;
+    // font-weight: 600;
+    padding: 0 2px !important;
+
+    input{
+      display: none !important;
+    }
+  }
+
+  .text-drop {
+    padding: 20px !important;
+    margin: 10px !important;
+  }
+
+}
