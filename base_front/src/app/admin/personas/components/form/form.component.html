@@ -4,9 +4,9 @@
             <div class="d-flex align-items-center">
                 <div class="d-flex align-items-center b-right mr-4 pr-4">
                     <!-- <i class="las la-user color-primary fs-big mr-3"></i> -->
-                    <p class="semibold color-primary fs-normal nowrap">Nueva funcionario</p>
+                    <p class="semibold color-primary fs-normal nowrap">Nueva persona</p>
                 </div>
-                <p class="color-gray3 x-small">Desde este Panel puedes asignar los datos para un nuevo funcionario . Todos los campos marcados con (*) son obligatorios.</p>
+                <p class="color-gray3 x-small">Desde este Panel puedes asignar al crear una nueva persona . Todos los campos marcados con (*) son obligatorios.</p>
             </div>
         </div>
         <div class="col-lg-3">
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="d-flex">
-                <span class="txt-top mx-3">Nueva funcionario</span>
+                <span class="txt-top mx-3">Nueva persona</span>
             </div>
             <button class="btn btn-primary btn-create">
 				Crear
@@ -44,7 +44,7 @@
         <div class="container-form mt-3 w-100 bg-white">
             <form [formGroup]="form" class="inn-form" (ngSubmit)="save($event)" novalidate>
                 <div class="first-section max-width-form m-auto">
-                    <p class="color-primary f-subtitle fs-normal">Funcionario</p>
+                    <p class="color-primary f-subtitle fs-normal">Persona</p>
                 </div>
                 <hr class="m-0">
                 <div class="form-data form-data-grid max-width-form m-auto">
@@ -58,8 +58,8 @@
                         <app-validation-error [form]="form" [field]="'tipo_Documento'"></app-validation-error>
                     </div>
                     <div class="form-input">
-                        <label for="numero_Documento" class="label-input">Numero de Documento*</label>
-                        <input type="text" class="form-control" placeholder="Ingresar Numero Documento" id="numero_Documento" formControlName="numero_Documento">
+                        <label for="numero_Documento" class="label-input">Número de Documento*</label>
+                        <input type="text" class="form-control" placeholder="Ingresar Número Documento" id="numero_Documento" formControlName="numero_Documento">
                         <app-validation-error [form]="form" [field]="'numero_Documento'"></app-validation-error>
                     </div>
                     <div class="form-input">
@@ -83,7 +83,7 @@
                         <app-validation-error [form]="form" [field]="'fecha_Nacimiento'"></app-validation-error>
                     </div>
                     <div class="form-input">
-                        <label for="tipo_funcionario" class="label-input">Tipo de funcionario *</label>
+                        <label for="tipo_funcionario" class="label-input">Tipo de persona*</label>
                         <select class="form-control" id="tipo_funcionario" formControlName="tipo_funcionario" aria-placeholder="Seleccionar" (change)="TipoFuncinarioChange()">
                             <option value="" selected>Seleccionar</option>
                             <option value="1" >Votante</option>
@@ -136,7 +136,7 @@
                             <span class="d-md-none">Cancelar</span>
                         </button>
                         <button type="submit" class="btn btn-primary">
-                            <span class="d-none d-md-block">Guardar funcionario</span>
+                            <span class="d-none d-md-block">Guardar persona</span>
                             <span class="d-md-none">Crear</span>
                         </button>
                     </div>

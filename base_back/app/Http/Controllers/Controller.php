@@ -89,15 +89,15 @@ class Controller extends BaseController
 
 
     protected $permissionsEn = [
-                                "index_users" => ["Index users", "users", "Users"],
-                                "create_users" => ["Create users", "users", "Users"],
-                                "update_users" => ["Update users", "users", "Users"],
-                                "delete_users" => ["Delete users", "users", "Users"],
+                                "index_users" => ["Visualización de usuarios", "users", "Users"],
+                                "create_users" => ["Creación de usuarios", "users", "Users"],
+                                "update_users" => ["Actualización de usuarios", "users", "Users"],
+                                "delete_users" => ["Eliminación de usuarios", "users", "Users"],
 
-                                "index_permissions" => ["Index permissions", "permissions", "Permissions"],
-                                "create_permissions" => ["Create permissions", "permissions", "Permissions"],
-                                "update_permissions" => ["Update permissions", "permissions", "Permissions"],
-                                "delete_permissions" => ["Delete permissions", "permissions", "Permissions"],
+                                "index_permissions" => ["Permiso de visualización", "permissions", "Permissions"],
+                                "create_permissions" => ["Permiso de creación", "permissions", "Permissions"],
+                                "update_permissions" => ["Permiso de actualización", "permissions", "Permissions"],
+                                "delete_permissions" => ["Permiso de eliminar", "permissions", "Permissions"],
 
                                 "index_posts" => ["Index posts", "posts", "Posts"],
                                 "create_posts" => ["Create posts", "posts", "Posts"],
