@@ -13,28 +13,32 @@ const routes: Routes = [
 		canActivateChild: [IsAuthenticatedGuard],
 		children: [
 			{path: 'panel', component: DashboardComponent},
-			{ 
-				path: 'usuarios', 
-				loadChildren: () => import('./users/users.module').then(m => m.UsersModule) 
+			{
+				path: 'usuarios',
+				loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
 			},
-			{ 
-				path: 'permisos', 
-				loadChildren: () => import('./permissions/permissions.module').then(m => m.PermissionsModule) 
+			{
+				path: 'permisos',
+				loadChildren: () => import('./permissions/permissions.module').then(m => m.PermissionsModule)
 			},
-			{ 
-				path: 'partidos', 
-				loadChildren: () => import('./partidos/partidos.module').then(m => m.PartidosModule) 
+			{
+				path: 'partidos',
+				loadChildren: () => import('./partidos/partidos.module').then(m => m.PartidosModule)
 			},
-			{ 
-				path: 'personas', 
-				loadChildren: () => import('./personas/personas.module').then(m => m.PersonasModule) 
+			{
+				path: 'personas',
+				loadChildren: () => import('./personas/personas.module').then(m => m.PersonasModule)
 			},
-			{ 
-				path: 'mesas', 
-				loadChildren: () => import('./mesas/mesas.module').then(m => m.MesasModule) 
+			{
+				path: 'mesas',
+				loadChildren: () => import('./mesas/mesas.module').then(m => m.MesasModule)
 			},
 			{
 				path: 'edicion-perfil/:id', component: FormComponent
+			},
+      {
+				path: 'puntos-votacion',
+				loadChildren: () => import('./puntos_votacion/puntos_votacion.module').then(m => m.PuntosvotacionModule)
 			}
 		]
   	}

@@ -1,0 +1,108 @@
+<div class="info">
+    <div class="row align-items-center">
+        <div class="col-lg-9 d-none d-md-block">
+            <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center b-right mr-4 pr-4">
+                    <!-- <i class="las la-user color-primary fs-big mr-3"></i> -->
+                    <p class="f-subtitle color-primary fs-normal nowrap">Puntos de Votación</p>
+                </div>
+                <p class="color-gray3 x-small">Estas son todas los puntos de votación en la plataforma, puedes crear, editar, consultar información o eliminar.</p>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="pr-md-4">
+                <div class="row d-flex justify-content-md-end justify-content-between align-items-center">
+                    <span class="d-md-none color-primary fs-normal"><b>18</b> entradas</span>
+                    <button class="btn btn-primary btn--icon" routerLink="/admin/puntos-votacion/nuevo">
+						<i class="las la-plus fs-normal mr-2 text-white"></i> Nuevo Punto de votación
+					</button>
+                </div>
+                <div class="row mt-3 d-md-none">
+                    <div class="searchbar show w-100">
+                        <span class="las la-search"></span>
+                        <input type="search" [placeholder]="placeholderSearch">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="box p-0">
+        <div class="row my-0">
+            <div class="col-12">
+                <div class="row px-4 py-3 justify-content-between align-items-center">
+                    <div class="col-12 col-md-6">
+                        <h4 class="mt-2 color-primary">Listado de puntos de votación</h4>
+                    </div>
+                    <div class="col-12 col-md-6 p-md-0">
+                        <form [formGroup]="formSearch" class="form-group row w-100 mr-0">
+                            <div class="col-12 col-lg-6 form-group mb-0">
+                                <label class="col-form-label color-gray3" for="search">Buscar puntos de votación</label>
+                                <input id="search" class="form-control" type="text" formControlName="search" placeholder="Buscar puntos de votación">
+                            </div>
+                            <div class="col-12 col-lg-6 form-group mb-0">
+                                <label for="resultados-pagina" id="paginador_tabla" class="col-form-label color-gray3">Número de resultados por
+						página:</label>
+                                <select class="form-control" id="resultados-pagina" (change)="changeRow($event)" formControlName="rows">
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="50">50</option>
+							<option value="100">100</option>
+						</select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 container-table px-4">
+                <div class="table-responsive ">
+                    <table class="table table-bordered table-striped table-bordered ">
+                        <thead class="text-center ">
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Ubicación</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-left">
+                            <tr *ngFor="let punto_votacion of puntos_votaciones; let i = index">
+                                <td>
+                                    {{i+1}}
+                                </td>
+                                <td class="txt-uppercase">
+                                    {{punto_votacion.nombre}}
+                                </td>
+                                <td class="txt-uppercase">
+                                    {{punto_votacion.direccion}}
+                                </td>
+                                <td>
+                                    <a class="mr-2" routerLink="/admin/puntos-votacion/editar/{{punto_votacion.id}}" tooltip="Editar">
+                                        <i class="las la-pen"></i>
+                                    </a>
+                                    <a href="javascript:;" class="mr-2" (click)="confirmDelete(punto_votacion.id)" tooltip="Eliminar">
+                                        <i class="las la-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="no-data py-4 px-2 text-center txt-gray4" *ngIf="puntos_votaciones.length == 0">
+                        No data
+                    </div>
+                </div>
+                <div class="box--pagination py-3 px-4">
+                    <span class="txt-dgold pl-2 ">Showing {{totalPages.to}} of {{totalPages.total}} records</span>
+                    <nav class="navigation pagination d-flex justify-content-center " role="navigation " *ngIf="pages.length> 0">
+                        <div class="nav-links ">
+                            <a class="page-numbers {{page[2]}}" href="javascript:;" (click)="getPage(page[1])" [innerHTML]="page[0]" *ngFor="let page of pages"></a>
+                        </div>
+                    </nav>
+                    <span class="txt-dgold text-right">Page {{totalPages.current_page}} of {{totalPages.last_page}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal-confirm #modalConfirm [content]="confirmMessage" (onCloseModal)="onCloseModalConfirm($event)"></app-modal-confirm>
