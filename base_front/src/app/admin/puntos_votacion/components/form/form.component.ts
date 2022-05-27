@@ -30,7 +30,7 @@ export class FormComponent implements OnInit {
       this.route.params.subscribe(params => {
         if (params['id']) {
           this.punto_votacion = params['id'];
-          this.getPuntoVotacion();
+          this.getPuntos_votacion();
         }
       });
 
@@ -38,7 +38,6 @@ export class FormComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-    this.getPuntoVotacion();
 	}
 
 	/**
@@ -62,17 +61,6 @@ export class FormComponent implements OnInit {
 	 * Get the variable to edit
 	 *
 	 */
-
-  getPuntoVotacion() {
-		this.service.queryGet('punto_vota').subscribe(
-			(response: any) => {
-				let result = response;
-				this.puntos_votaciones = result;
-			},
-			(err: any) => {
-			}
-		);
-	}
 
   getPuntos_votacion(){
 		this.service.queryGet(`punto_vota/${this.punto_votacion}`).subscribe(

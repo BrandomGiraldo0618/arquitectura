@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center">
                 <div class="d-flex align-items-center b-right mr-4 pr-4">
                     <!-- <i class="las la-user color-primary fs-big mr-3"></i> -->
-                    <p class="semibold color-primary fs-normal nowrap">Nueva Mesa</p>
+                    <p class="semibold color-primary fs-normal nowrap">Mesa</p>
                 </div>
                 <p class="color-gray3 x-small">Desde este Panel puedes asignar los datos para una nueva mesa. Todos los campos marcados con (*) son obligatorios.</p>
             </div>
@@ -12,7 +12,7 @@
         <div class="col-lg-3">
             <div class="d-flex justify-content-end pr-4">
                 <button class="btn btn btn-light btn--icon" (click)="location.back();">
-					<i class="las la-times fs-normal mr-2"></i> Cancelar Creación
+					<i class="las la-times fs-normal mr-2"></i> Cancelar
 				</button>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="d-flex">
-                <span class="txt-top mx-3">Nueva mesa</span>
+                <span class="txt-top mx-3">Mesa</span>
             </div>
             <button class="btn btn-primary btn-create">
 				Crear
@@ -49,7 +49,7 @@
                 <hr class="m-0">
                 <div class="form-data form-data-grid max-width-form m-auto">
                     <div class="form-input">
-                        <label for="nombre" class="label-input">Nombre mesa *</label>
+                        <label for="nombre" class="label-input">Nombre Mesa *</label>
                         <input type="text" class="form-control" placeholder="Ingresar nombre" id="nombre" formControlName="nombre">
                         <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
                     </div>
@@ -72,7 +72,7 @@
                             <span class="d-md-none">Cancelar</span>
                         </button>
                         <button type="submit" class="btn btn-primary">
-                            <span class="d-none d-md-block">Guardar Mesa</span>
+                            <span class="d-none d-md-block">Guardar mesa</span>
                             <span class="d-md-none">Crear</span>
                         </button>
                     </div>

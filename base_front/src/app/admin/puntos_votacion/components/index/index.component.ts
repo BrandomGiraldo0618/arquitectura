@@ -107,7 +107,7 @@ export class IndexComponent implements OnInit {
 
 	getPage(page: number) {
 	if (page != this.currentPage) {
-	  this.getPuntos_votacion(page);
+		this.getPuntos_votacion(page);
 	}
 	}
 
