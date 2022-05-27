@@ -6,6 +6,7 @@ use App\Http\Requests\PuntoVotacioRequest;
 use App\Models\PuntoVotacio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PuntoVotacioController extends Controller
 {
