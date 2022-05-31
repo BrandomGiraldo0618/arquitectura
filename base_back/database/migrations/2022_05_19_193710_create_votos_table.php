@@ -19,11 +19,13 @@ class CreateVotosTable extends Migration
             $table->unsignedInteger('votante_id');
             $table->unsignedInteger('tipo_id');
             $table->unsignedInteger('partido_id');
+            $table->unsignedInteger('candidato_id');
             
             $table->date('fecha');
             $table->timestamps();
 
             $table->foreign('votante_id')->references('id')->on('votantes')->onDelete('cascade');         
+            $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade');         
             $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->foreign('partido_id')->references('id')->on('partidos'); 
 

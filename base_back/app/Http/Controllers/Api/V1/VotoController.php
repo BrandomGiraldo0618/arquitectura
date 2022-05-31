@@ -31,31 +31,48 @@ class VotoController extends Controller
         //Que el votante exitasta como votante
 
         $cedula =  $request->input('numero_identificacion');
-        $persona = Persona::where('numero_Documento', $cedula);
-
-        if(null != $persona){
+        $persona = Persona::where('numero_Documento', $cedula)->first();
+        $votante= Votante::where('persona_id',$persona->id)->first();
+        if(null != $votante){
             //Que no tenga un voto registrado de ese tipo (senado - camara)
             $voto = Voto::where('votante_id', $persona->id)
                         ->where('tipo_id', $request->tipo_id);
 
             if(null != $voto){
                 //REGISTRAMOS EL VOTO
+                $new_voto = new Voto();
+                $new_voto->fecha=$request->fecha;
+                $new_voto->votante_id = $request->votante_id;
+                $new_voto->tipo_id = $request->tipo_id;
+                $new_voto->partido_id = $request->partido_id;
+                $new_voto->save();
+                $reponse=["Ok"=>true,"Mensaje"=>"Voto registrado exitosamente"];
             }else{
+                $reponse=["Ok"=>false,"Mensaje"=>"Ya existe un voto de este tipo"];
+
                 //RETORNA ERROR
             }
+        }else{
+            $reponse=["Ok"=>false,"Mensaje"=>"Usted no esta registrado como votante"];
+
         }
 
+        
+
+        return response()->json($reponse,Response::HTTP_CREATED);
+    }
 
 
-        $new_voto = new Voto();
-        $new_voto->fecha=$request->fecha;
-        $new_voto->votante_id = $request->votante_id;
-        $new_voto->tipo_id = $request->tipo_id;
-        $new_voto->partido_id = $request->partido_id;
+    public function partidoListaAC(Request $request){
+        $id_partido =  $request->input('id_Partdo');
+        $partido=Partido::find($id_partido);
 
-        $new_voto->save();
-
-        return response()->json(['ok'=>true],Response::HTTP_CREATED);
+        if($partido->listaA_C==true){
+            $candidatos=Candidato::where('partido_id', $id_partido)->get();
+        }else{
+            $candidatos=Candidato::where('partido_id', $id_partido)->first();
+        }
+        return response()->json($candidatos,Response::HTTP_CREATED);
     }
 
     /**
