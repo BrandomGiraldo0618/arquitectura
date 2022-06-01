@@ -62,6 +62,19 @@ class VotoController extends Controller
         return response()->json($reponse,Response::HTTP_CREATED);
     }
 
+    public function validarVotante(Request $request){
+
+        $cedula =  $request->input('numero_identificacion');
+        $persona = Persona::where('numero_Documento', $cedula)->first();
+        $votante= Votante::where('persona_id',$persona->id)->first();
+
+        if(null != $votante){
+            return response()->json(true,Response::HTTP_CREATED);
+        }else{
+            return response()->json(false,Response::HTTP_CREATED);
+        }
+
+    }
 
     public function partidoListaAC(Request $request){
         $id_partido =  $request->input('id_Partdo');
@@ -70,7 +83,7 @@ class VotoController extends Controller
         if($partido->listaA_C==true){
             $candidatos=Candidato::where('partido_id', $id_partido)->get();
         }else{
-            $candidatos=Candidato::where('partido_id', $id_partido)->first();
+            $candidatos=[];
         }
         return response()->json($candidatos,Response::HTTP_CREATED);
     }
