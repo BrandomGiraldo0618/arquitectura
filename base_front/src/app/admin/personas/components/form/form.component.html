@@ -52,19 +52,20 @@
                         <label for="tipo_Documento" class="label-input">Tipo de  Documento *</label>
                         <select class="form-control" id="tipo_Documento" formControlName="tipo_Documento" aria-placeholder="Seleccionar">
                             <option value="" selected>Seleccionar</option>
-                            <option value="CC" >Cedula de Ciudadania</option>
+                            <option value="CC" >Cédula de Ciudadanía</option>
                             <option value="TI" >Tarjeta de Identidad </option>
                         </select>
                         <app-validation-error [form]="form" [field]="'tipo_Documento'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="numero_Documento" class="label-input">Número de Documento*</label>
-                        <input type="text" class="form-control" placeholder="Ingresar Número Documento" id="numero_Documento" formControlName="numero_Documento">
+                        <input type="number" class="form-control"  placeholder="Ingresar Número Documento"
+                        maxlength="10" minlength="4" id="numero_Documento" formControlName="numero_Documento">
                         <app-validation-error [form]="form" [field]="'numero_Documento'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="nombre" class="label-input">Nombre *</label>
-                        <input type="text" class="form-control" placeholder="Ingresar nombre" id="nombre" formControlName="nombre">
+                        <input type="text" class="form-control" placeholder="Ingresar nombre" id="nombre"  formControlName="nombre">
                         <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
                     </div>
                     <div class="form-input">
@@ -94,7 +95,7 @@
                         <app-validation-error [form]="form" [field]="'tipo_funcionario'"></app-validation-error>
                     </div>
                     <div class="form-input" *ngIf="votante == true || jurado == true">
-                        <label for="punto_votacion_id" class="label-input">Punto de votacion *</label>
+                        <label for="punto_votacion_id" class="label-input">Punto de votación *</label>
                         <select class="form-control" id="punto_votacion_id" formControlName="punto_votacion_id" aria-placeholder="Seleccionar" (change)="getMesas()">
                             <option value="" selected>Seleccionar</option>
                             <option value="{{punto_votacion.id}}" *ngFor="let punto_votacion of puntos_votaciones">{{punto_votacion.nombre}}</option>
