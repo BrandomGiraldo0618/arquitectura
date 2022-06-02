@@ -149,7 +149,7 @@ export class IndexComponent implements OnInit {
 				if (result.ok)
 				{
 					this.funcionarioId = 0;
-					this.singleton.showAlert({type: 'success', content: 'Funcionario eliminado'});
+					this.singleton.showAlert({type: 'success', content: 'Persona eliminada'});
 					this.ngOnInit();
 				}
 				else
