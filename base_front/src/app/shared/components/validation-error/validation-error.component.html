@@ -1,7 +1,7 @@
 <div class="input-error" [class.opened]="form.get(field).errors && form.get(field).touched">
     <span class="lnr lnr-warning"></span>
     <p *ngIf="form.get(field).hasError('required')">{{'Campo requerido' | translate}}</p>
-    <p *ngIf="form.get(field).hasError('minlength')">{{'validations.minlength' | translate}}</p>
-    <p *ngIf="form.get(field).hasError('maxlength')">{{'validations.maxlength' | translate}}</p>
-    <p *ngIf="form.get(field).hasError('email')">{{'validations.no_valid_email' | translate}}</p>
+    <p *ngIf="form.get(field).hasError('minlength')">{{'Mínimo es de 6 Caracteres' | translate}}</p>
+    <p *ngIf="form.get(field).hasError('maxlength')">{{'Maximo es de 20 Caracteres' | translate}}</p>
+    <p *ngIf="form.get(field).hasError('email')">{{'Email No válido' | translate}}</p>
 </div>
