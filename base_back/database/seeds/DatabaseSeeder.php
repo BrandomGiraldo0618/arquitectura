@@ -1,12 +1,10 @@
 <?php
-use App\Models\PuntoVotacio;
+
+use App\Models\Partido;
+use App\Models\Persona;
+use App\Models\Tipo;
+use Database\Seeders\TipoSeeder;
 use Illuminate\Database\Seeder;
-use Database\Seeders\PuntoVotacioSeeder;
-use Database\Factories\PuntoVotacionFactory;
-
-
-
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,14 +18,30 @@ class DatabaseSeeder extends Seeder
         $this->call([
            RolesAndPermissionsSeeder::class,
            UserSeeder::class,
-           //Mesa::class,
-           //Votante::class,
         ]);
 
-        //PuntoVotacioSeeder::class;
-       //PuntoVotacio::factory(5)->create();
-       //Mesa::factory(5)->create();
-       //Votante::factory(5)->create();
-       //Persona::factory(5)->create();
+        $nomTipos = ['Cámara','Senado'];
+
+        foreach ($nomTipos as $nomTipo) {
+            $tipo = new Tipo;
+            $tipo->nombre = $nomTipo;
+            $tipo->save();
+        }
+
+        $persona = new Persona;
+        $persona->tipo_Documento = 'COD_PAIS';
+        $persona->numero_Documento = '57';
+        $persona->nombre = 'República';
+        $persona->apellido = 'Colombiana';
+        $persona->lugar_Nacimiento = 'Colombia';
+        $persona->fecha_Nacimiento = '20/07/1810';
+        $persona->save();
+
+        $partido = new Partido;
+        $partido->nombre = 'Voto en Blanco';
+        $partido->personaId_Rlegal = $persona->id;
+        $partido->listaA_C = false;
+        $partido->save();
+
     }
 }
