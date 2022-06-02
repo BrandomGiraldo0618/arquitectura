@@ -18,6 +18,10 @@ const routes: Routes = [
 		path: 'tecnico', 
 		loadChildren: () => import('./technical/technical.module').then(m => m.TechnicalModule) 
 	},
+	{ 
+		path: 'votos', 
+		loadChildren: () => import('./votos/votos.module').then(m => m.VotosModule) 
+	},
 
 	//-- Error 500 page
 	{ path: 'error-500', component: Error500Component },
