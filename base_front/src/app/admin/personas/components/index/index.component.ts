@@ -35,7 +35,7 @@ export class IndexComponent implements OnInit {
 		public singleton: SingletonService,
 		private formBuilder: FormBuilder
   ) {
-    this.confirmMessage = '¿Está seguro de eliminar este funcionario?';
+    this.confirmMessage = '¿Está seguro de eliminar esta persona?';
 	this.buildForm();
   }
 

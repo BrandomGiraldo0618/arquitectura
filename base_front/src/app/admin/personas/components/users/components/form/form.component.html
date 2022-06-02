@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-input">
                         <label for="email" class="label-input">E-mail personal *</label>
-                        <input type="text" class="form-control" placeholder="Ingresar correo" id="email" formControlName="email">
+                        <input type="text" ng-pattern=" ^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$" autocomplete="off" class="form-control" placeholder="Ingresar correo" id="email" formControlName="email">
                         <app-validation-error [form]="form" [field]="'email'"></app-validation-error>
                     </div>
                     <div class="form-input">
