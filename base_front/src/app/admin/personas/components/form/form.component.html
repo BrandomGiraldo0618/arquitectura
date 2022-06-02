@@ -80,7 +80,7 @@
                     </div>
                     <div class="form-input">
                         <label for="fecha_Nacimiento" class="label-input">Fecha de Nacimiento *</label>
-                        <input type="date" max="{{fechaNac | date:'yyyy-MM-dd'}}" class="form-control" placeholder="Ingresar Fecha de Nacimiento" id="fecha_Nacimiento" formControlName="fecha_Nacimiento">
+                        <input type="date" max="{{fechaNac | date:'yyyy-MM-dd'}}" class="form-control" placeholder="Ingresar Fecha de Nacimiento" id="fecha_Nacimiento" formControlName="fecha_Nacimiento" onkeydown="return false">
                         <app-validation-error [form]="form" [field]="'fecha_Nacimiento'"></app-validation-error>
                     </div>
                     <div class="form-input">
