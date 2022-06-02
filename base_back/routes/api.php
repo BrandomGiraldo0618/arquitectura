@@ -55,4 +55,5 @@ use Illuminate\Support\Facades\Route;
     Route::apiResource('v1/votante', 'Api\V1\VotanteController');
     Route::apiResource('v1/jurado', 'Api\V1\JuradoController');
     Route::get('v1/mesa/consultar-por-punto-votacion/{id}', 'Api\V1\MesaController@consultarPorPuntoVotacion');
+    Route::post('v1/find_person', 'Api\V1\PersonaController@find'); 
     //Route::get('v1/punto_vota-test', 'Api\V1\PuntoVotacioController@index');
