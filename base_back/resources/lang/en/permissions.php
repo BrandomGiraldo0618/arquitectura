@@ -11,15 +11,15 @@ return array(
 	|
 	*/
 
-	'role_created' => 'Role created',
-	'role_updated' => 'Updated role',
-    'search_role' => 'Role not found',
+	'role_created' => 'Rol Creado',
+	'role_updated' => 'Rol Actualizado',
+    'search_role' => 'Role no Encontrado',
     'cant_be_deleted' => 'The role cannot be removed if it has associated information',
-    'deleted_role' => 'Delete role',
-	'permission_created' => 'Permission created',
-	'permission_updated' => 'Updated permission',
+    'deleted_role' => 'Rol Eliminado',
+	'permission_created' => 'Permiso Creado',
+	'permission_updated' => 'Permiso Actualizado',
 	'associated_permission' => 'Associated permit',
-	'assigned_role' => 'Assigned role',
+	'assigned_role' => 'Rol asignado',
 	'revoked_permission' => 'Permission revoked',
 	'removed_role' => 'Role removed',
 	'synchronized_permissions' => 'Synced permissions'
