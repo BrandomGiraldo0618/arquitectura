@@ -58,4 +58,5 @@ use Illuminate\Support\Facades\Route;
     Route::get('v1/validar-partido/{partido_id}/{tipo_voto}', 'Api\V1\VotoController@partidoListaAC');
     Route::get('v1/validar-votante/{documento}', 'Api\V1\VotoController@validarVotante');
     Route::get('v1/mesa/consultar-por-punto-votacion/{id}', 'Api\V1\MesaController@consultarPorPuntoVotacion');
+    Route::post('v1/find_person', 'Api\V1\PersonaController@find'); 
     //Route::get('v1/punto_vota-test', 'Api\V1\PuntoVotacioController@index');

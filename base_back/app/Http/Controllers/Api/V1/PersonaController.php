@@ -42,8 +42,30 @@ class PersonaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function find(PersonaRequest  $request)
+    {
+        $find =$request->numero_Documento;
+        $existencia = DB::table('personas')
+        ->select('numero_Documento')
+        ->where('numero_Documento', '=', $find)
+        ->get();
+        if(count($existencia) >= 1) {
+            return response()->json(["message"=>"Ya Existen Personas Registradas"]);
+
+        }
+    }
     public function store(PersonaRequest  $request)
     {
+        $find =$request->numero_Documento;
+        $existencia = DB::table('personas')
+        ->select('numero_Documento')
+        ->where('numero_Documento', '=', $find)
+        ->get();
+        if(count($existencia) >= 1) {
+            return response()->json(["message"=>"Ya Existen Personas Registradas"]);
+
+        }else{       
+        
         //CREAR PERSONA
         $new_persona= new Persona();
         $new_persona->tipo_Documento = $request->tipo_Documento;
@@ -99,6 +121,7 @@ class PersonaController extends Controller
         }
 
         return response()->json(['ok'=>true],Response::HTTP_CREATED);
+        }
     }
 
     /**

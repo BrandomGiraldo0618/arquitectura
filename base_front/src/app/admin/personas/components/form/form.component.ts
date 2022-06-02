@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
 	variable: any;
 	personaId = 0;
 	form!: FormGroup;
+	fechaNac: any;
 	
 	roles = [];
 
@@ -49,6 +50,7 @@ export class FormComponent implements OnInit {
 		this.getTiposCandidatos();
 		this.getPartidos();
 		this.getPuntoVotacion();
+		this.validateDate();
 	}
 
 	/**
@@ -73,7 +75,13 @@ export class FormComponent implements OnInit {
 			punto_votacion_id: ['']
 		});
 	}
-
+	validateDate(){
+		const fechaActual = new Date();
+		const añoActual = fechaActual.getFullYear();
+		const hoy = fechaActual.getDate();
+		const mesActual = fechaActual.getMonth() + 1;
+		this.fechaNac = `${añoActual}-${mesActual}-${hoy}`;
+	}
 	/**
 	 *
 	 * Get the variable to edit

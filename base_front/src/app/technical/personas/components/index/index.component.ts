@@ -35,7 +35,7 @@ export class IndexComponent implements OnInit {
 		public singleton: SingletonService,
 		private formBuilder: FormBuilder
   ) {
-    this.confirmMessage = '¿Está seguro de eliminar este funcionario?';
+    this.confirmMessage = '¿Está seguro de eliminar esta persona?';
 	this.buildForm();
   }
 
@@ -149,7 +149,7 @@ export class IndexComponent implements OnInit {
 				if (result.ok)
 				{
 					this.funcionarioId = 0;
-					this.singleton.showAlert({type: 'success', content: 'Funcionario eliminado'});
+					this.singleton.showAlert({type: 'success', content: 'Persona eliminada'});
 					this.ngOnInit();
 				}
 				else
