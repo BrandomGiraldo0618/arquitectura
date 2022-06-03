@@ -77,7 +77,7 @@ export class FormComponent implements OnInit {
 	}
 	validateDate(){
 		const fechaActual = new Date();
-		const añoActual = fechaActual.getFullYear();
+		const añoActual = fechaActual.getFullYear()-18;
 		const hoy = fechaActual.getDate();
 		const mesActual = fechaActual.getMonth() + 1;
 		this.fechaNac = `${añoActual}-${mesActual}-${hoy}`;

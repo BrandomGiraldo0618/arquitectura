@@ -37,7 +37,7 @@
                     <div class="d-flex align-items-center">
                         <span class="color-gray3 x-small mr-3 space-nowrap">Nombre de Rol</span>
                         <div class="form-group mb-0 width-available">
-                            <input type="text" class="form-control" placeholder="Ingresa nombre de rol" formControlName="name">
+                            <input type="text" onkeydown="return /[a-z, A-Z, ñÑáéíóúÁÉÍÓÚ ]/i.test(event.key)" class="form-control" placeholder="Ingresa nombre de rol" formControlName="name">
                         </div>
                     </div>
                 </div>

@@ -65,17 +65,17 @@
                     </div>
                     <div class="form-input">
                         <label for="nombre" class="label-input">Nombre *</label>
-                        <input type="text" onkeydown="return /[a-z, A-Z ]/i.test(event.key)" class="form-control" placeholder="Ingresar nombre" id="nombre"  formControlName="nombre">
+                        <input type="text" onkeydown="return /[a-z,A-Z,ñÑáéíóúÁÉÍÓÚ]/i.test(event.key)" class="form-control" placeholder="Ingresar nombre" id="nombre"  formControlName="nombre">
                         <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="apellido" class="label-input">Apellido *</label>
-                        <input type="text" onkeydown="return /[a-z, A-Z ]/i.test(event.key)" class="form-control" placeholder="Ingresar Apellido " id="apellido" formControlName="apellido">
+                        <input type="text" onkeydown="return /[a-z, A-Z, ñÑáéíóúÁÉÍÓÚ ]/i.test(event.key)" class="form-control" placeholder="Ingresar Apellido " id="apellido" formControlName="apellido">
                         <app-validation-error [form]="form" [field]="'apellido'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="lugar_Nacimiento" class="label-input">Lugar de Nacimiento</label>
-                        <input type="text" onkeydown="return /[a-z, A-Z ]/i.test(event.key)" class="form-control" placeholder="Ingresar lugar de Nacimiento" id="lugar_Nacimiento" formControlName="lugar_Nacimiento">
+                        <input type="text" onkeydown="return /[a-z, A-Z, ñÑáéíóúÁÉÍÓÚ ]/i.test(event.key)" class="form-control" placeholder="Ingresar lugar de Nacimiento" id="lugar_Nacimiento" formControlName="lugar_Nacimiento">
                         <app-validation-error [form]="form" [field]="'lugar_Nacimiento'"></app-validation-error>
                     </div>
                     <div class="form-input">

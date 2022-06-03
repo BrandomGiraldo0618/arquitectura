@@ -50,7 +50,7 @@
                 <div class="form-data form-data-grid max-width-form m-auto">
                     <div class="form-input">
                         <label for="nombre" class="label-input">Nombre punto de votación *</label>
-                        <input type="text" class="form-control" placeholder="Ingresar nombre" id="nombre" formControlName="nombre">
+                        <input type="text" onkeydown="return /[a-z, A-Z, ñÑáéíóúÁÉÍÓÚ ]/i.test(event.key)" class="form-control" placeholder="Ingresar nombre" id="nombre" formControlName="nombre">
                         <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
                     </div>
                     <div class="form-input">
