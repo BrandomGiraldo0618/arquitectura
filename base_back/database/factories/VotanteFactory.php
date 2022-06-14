@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Mesa;
+use App\Models\Persona;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VotanteFactory extends Factory
@@ -15,8 +17,8 @@ class VotanteFactory extends Factory
     {
         return [
             'huella'=>$this->faker->text,
-            'persona_id'=>$this->faker->rand(1,5),
-            'mesa_id'=>$this->faker->rand(1,5)
+            'persona_id'=> Persona::all()->random()->id,
+            'mesa_id'=> Mesa::all()->random()->id
         ];
     }
 }

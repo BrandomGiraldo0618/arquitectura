@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Mesa;
+use App\Models\Partido;
 use Illuminate\Database\Seeder;
 
-class MesaSeeder extends Seeder
+class PartidoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,8 @@ class MesaSeeder extends Seeder
      */
     public function run()
     {
-       Mesa::factory()
-                ->count(100)
+        Partido::factory()
+                ->count(10)
                 ->create();
     }
 }

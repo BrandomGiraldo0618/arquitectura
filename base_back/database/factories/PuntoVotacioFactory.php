@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\PuntoVotacio;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MesaFactory extends Factory
+class PuntoVotacioFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,8 +14,8 @@ class MesaFactory extends Factory
     public function definition()
     {
         return [
-            'nombre'=> "Mesa ". $this->faker->numberBetween(1,100),
-            'punto_votacio_id'=> PuntoVotacio::all()->random()->id,
+            'nombre'=>$this->faker->title,
+            'direccion'=>$this->faker->text(150)
         ];
     }
 }

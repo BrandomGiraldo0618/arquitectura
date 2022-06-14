@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Mesa;
+use App\Models\PuntoVotacio;
 use Illuminate\Database\Seeder;
 
-class MesaSeeder extends Seeder
+class PuntoVotacioSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class MesaSeeder extends Seeder
      */
     public function run()
     {
-       Mesa::factory()
+        PuntoVotacio::factory()
                 ->count(100)
                 ->create();
     }

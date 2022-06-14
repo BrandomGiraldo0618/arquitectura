@@ -3,7 +3,13 @@
 use App\Models\Partido;
 use App\Models\Persona;
 use App\Models\Tipo;
-use Database\Seeders\TipoSeeder;
+use Database\Seeders\CandidatoSeeder;
+use Database\Seeders\MesaSeeder;
+use Database\Seeders\PartidoSeeder;
+use Database\Seeders\PersonaSeeder;
+use Database\Seeders\PuntoVotacioSeeder;
+use Database\Seeders\VotanteSeeder;
+use Database\Seeders\VotoSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,11 +21,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-           RolesAndPermissionsSeeder::class,
-           UserSeeder::class,
-        ]);
-
         $nomTipos = ['Cámara','Senado'];
 
         foreach ($nomTipos as $nomTipo) {
@@ -27,6 +28,18 @@ class DatabaseSeeder extends Seeder
             $tipo->nombre = $nomTipo;
             $tipo->save();
         }
+
+        $this->call([
+           RolesAndPermissionsSeeder::class,
+           UserSeeder::class,
+           PersonaSeeder::class,
+           PartidoSeeder::class,
+           PuntoVotacioSeeder::class,
+           MesaSeeder::class,
+           VotanteSeeder::class,
+           CandidatoSeeder::class,
+           VotoSeeder::class,
+        ]);
 
         $persona = new Persona;
         $persona->tipo_Documento = 'COD_PAIS';

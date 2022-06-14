@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Persona;
+use App\Models\Votante;
 use Illuminate\Database\Seeder;
 
 class VotanteSeeder extends Seeder
@@ -13,6 +15,8 @@ class VotanteSeeder extends Seeder
      */
     public function run()
     {
-        //Votante::factory(5)->create();
+        Votante::factory()
+                ->count(100)
+                ->create();
     }
 }
