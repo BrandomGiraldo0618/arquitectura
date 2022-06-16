@@ -24,14 +24,14 @@ class PersonaController extends Controller
     public function index()
     {
         $funcionarios = DB::select("SELECT A.*,
-                                        CASE 
+                                        CASE
                                             WHEN (SELECT COUNT(*) FROM votantes WHERE persona_id = A.id) = 1 THEN 'Votante'
                                             WHEN (SELECT COUNT(*) FROM candidatos WHERE persona_id = A.id) = 1 THEN 'Candidato'
-                                            WHEN (SELECT COUNT(*) FROM jurados WHERE persona_id = A.id) = 1 THEN 'Jurados'
+                                            WHEN (SELECT COUNT(*) FROM jurados WHERE persona_id = A.id) = 1 THEN 'Jurado'
                                             ELSE 'Representante Legal'
                                         END AS tipo_funcionario
                                         FROM personas AS A");
-                            
+
         return response()->json($funcionarios, Response::HTTP_OK);
 
     }
@@ -64,8 +64,8 @@ class PersonaController extends Controller
         if(count($existencia) >= 1) {
             return response()->json(["message"=>"Ya Existen Personas Registradas"]);
 
-        }else{       
-        
+        }else{
+
         //CREAR PERSONA
         $new_persona= new Persona();
         $new_persona->tipo_Documento = $request->tipo_Documento;
@@ -98,6 +98,7 @@ class PersonaController extends Controller
                 VotanteController::store($votanteRequest);
                 # code...
                 break;
+
 
             case 2:
                 $juradoRequest  = new JuradoRequest();
