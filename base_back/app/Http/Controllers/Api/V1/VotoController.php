@@ -346,4 +346,28 @@ class VotoController extends Controller
         }
 
     }
+
+    public function totalVotos()
+    {
+        $totalVotos = DB::select("SELECT 
+                                    COUNT(v.id) AS total_votos_senado
+                                        FROM votos v");
+
+        $totalVotosCamara = DB::select("SELECT 
+                                COUNT(v.id) AS total_votos
+                                    FROM votos v
+                                WHERE v.tipo_id = 1");
+
+        $totalVotosSenado = DB::select("SELECT 
+                                COUNT(v.id) AS total_votos
+                                    FROM votos v
+                                WHERE v.tipo_id = 2");
+        
+        return response()->json(
+            [
+                "total_votos" => $totalVotos[0]->total_votos_senado,
+                "total_votos_camara" => $totalVotosCamara[0]->total_votos,
+                "total_votos_senado" => $totalVotosSenado[0]->total_votos
+            ],Response::HTTP_OK);
+    }
 }

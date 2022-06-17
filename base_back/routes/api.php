@@ -61,4 +61,5 @@ use Illuminate\Support\Facades\Route;
     Route::post('v1/find_person', 'Api\V1\PersonaController@find'); 
     Route::get('v1/info-senado', 'Api\V1\VotoController@infoSenado');
     Route::get('v1/info-camara', 'Api\V1\VotoController@infoVotosCamara');
+    Route::get('v1/total-votos', 'Api\V1\VotoController@totalVotos');
     //Route::get('v1/punto_vota-test', 'Api\V1\PuntoVotacioController@index');

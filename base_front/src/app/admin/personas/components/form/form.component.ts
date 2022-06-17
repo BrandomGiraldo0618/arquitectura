@@ -42,8 +42,8 @@ export class FormComponent implements OnInit {
 				this.getPersona();
 			}
 		});
-
 		this.buildForm();
+
 	}
 
 	ngOnInit(): void {
@@ -62,7 +62,7 @@ export class FormComponent implements OnInit {
 	private buildForm() {
 		this.form = this.formBuilder.group({
 			id: [0],
-			tipo_documento: ['', [Validators.required]],
+			tipo_documento: ['', []],
 			numero_documento: ['', [Validators.required]],
 			nombre: ['', [Validators.required]],
 			apellido: ['', [Validators.required]],
@@ -172,16 +172,17 @@ export class FormComponent implements OnInit {
 		this.service.queryGet(`persona/${this.personaId}`).subscribe(
 			(response: any) => {
 				let result = response;
+				result = result[0];
 				this.form.setValue({
-					id: result.id ,
-					tipo_documento: result.tipo_documento ,
+					id: this.personaId,
+					tipo_documento: result.tipo_documento,
 					numero_documento: result.numero_documento ,
 					nombre: result.nombre ,
 					apellido: result.apellido,
 					lugar_nacimiento: result.lugar_nacimiento,
 					fecha_nacimiento: result.fecha_nacimiento,
 					mesa_id: '1',
-					tipo_funcionario: '1',
+					tipo_funcionario: result.tipo_funcionario_id,
 					partido_id: '1',
 					tipo_candidato_id: '1',
 					punto_votacion_id: '1',
