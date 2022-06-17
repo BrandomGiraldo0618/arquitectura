@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit {
 	totalPages: any = 1;
 	perPage = 10;  status = 1;
 	search = '';
-	placeholderSearch = 'Buscar en funcionarios';
+	placeholderSearch = 'Buscar en personas';
 
 	//-- Search Variables
 	formSearch: FormGroup;
