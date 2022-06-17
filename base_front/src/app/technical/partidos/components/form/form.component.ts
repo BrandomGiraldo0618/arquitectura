@@ -57,8 +57,8 @@ export class FormComponent implements OnInit {
 		this.form = this.formBuilder.group({
 			id: [0],
 			nombre: ['', [Validators.required]],
-			personaId_Rlegal: ['', [Validators.required]],
-			listaA_C: ['', [Validators.required]]
+			personaid_rlegal: ['', [Validators.required]],
+			listaa_c: ['', [Validators.required]]
 		});
 	}
 
@@ -86,8 +86,8 @@ export class FormComponent implements OnInit {
 				this.form.setValue({
 					id: result.id ,
 					nombre: result.nombre,
-					personaId_Rlegal: result.personaId_Rlegal ,
-					listaA_C: result.listaA_C
+					personaid_rlegal: result.personaid_rlegal ,
+					listaa_c: result.listaa_c
 				});
 			},
 			(err: any) => {

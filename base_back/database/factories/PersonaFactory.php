@@ -15,12 +15,12 @@ class PersonaFactory extends Factory
     {
         $documentKind = ['CC','TI'];
         return [
-            'tipo_Documento'=>$documentKind[$this->faker->numberBetween(0,1)],
-            'numero_Documento'=>$this->faker->numberBetween(1000,999999999),
+            'tipo_documento'=>$documentKind[$this->faker->numberBetween(0,1)],
+            'numero_documento'=>$this->faker->numberBetween(1000,999999999),
             'nombre'=>$this->faker->name(),
             'apellido'=>$this->faker->lastName(),
-            'lugar_Nacimiento'=>$this->faker->city,
-            'fecha_Nacimiento'=>$this->faker->date("Y-m-d", mt_rand(0, 500000000))
+            'lugar_nacimiento'=>$this->faker->city,
+            'fecha_nacimiento'=>$this->faker->date("Y-m-d", mt_rand(0, 500000000))
         ];
     }
 }

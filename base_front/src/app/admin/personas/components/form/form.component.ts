@@ -62,12 +62,12 @@ export class FormComponent implements OnInit {
 	private buildForm() {
 		this.form = this.formBuilder.group({
 			id: [0],
-			tipo_Documento: ['', [Validators.required]],
-			numero_Documento: ['', [Validators.required]],
+			tipo_documento: ['', [Validators.required]],
+			numero_documento: ['', [Validators.required]],
 			nombre: ['', [Validators.required]],
 			apellido: ['', [Validators.required]],
-			lugar_Nacimiento: ['', [Validators.required]],
-			fecha_Nacimiento: ['', [Validators.required]],
+			lugar_nacimiento: ['', [Validators.required]],
+			fecha_nacimiento: ['', [Validators.required]],
 			mesa_id: [''],
 			tipo_funcionario: [''],
 			partido_id: [''],
@@ -174,12 +174,12 @@ export class FormComponent implements OnInit {
 				let result = response;
 				this.form.setValue({
 					id: result.id ,
-					tipo_Documento: result.tipo_Documento ,
-					numero_Documento: result.numero_Documento ,
+					tipo_documento: result.tipo_documento ,
+					numero_documento: result.numero_documento ,
 					nombre: result.nombre ,
 					apellido: result.apellido,
-					lugar_Nacimiento: result.lugar_Nacimiento,
-					fecha_Nacimiento: result.fecha_Nacimiento,
+					lugar_nacimiento: result.lugar_nacimiento,
+					fecha_nacimiento: result.fecha_nacimiento,
 					mesa_id: '1',
 					tipo_funcionario: '1',
 					partido_id: '1',

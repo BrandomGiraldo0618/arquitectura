@@ -44,10 +44,10 @@ class PersonaController extends Controller
      */
     public function find(PersonaRequest  $request)
     {
-        $find =$request->numero_Documento;
+        $find =$request->numero_documento;
         $existencia = DB::table('personas')
-        ->select('numero_Documento')
-        ->where('numero_Documento', '=', $find)
+        ->select('numero_documento')
+        ->where('numero_documento', '=', $find)
         ->get();
         if(count($existencia) >= 1) {
             return response()->json(["message"=>"Ya Existen Personas Registradas"]);
@@ -56,10 +56,10 @@ class PersonaController extends Controller
     }
     public function store(PersonaRequest  $request)
     {
-        $find =$request->numero_Documento;
+        $find =$request->numero_documento;
         $existencia = DB::table('personas')
-        ->select('numero_Documento')
-        ->where('numero_Documento', '=', $find)
+        ->select('numero_documento')
+        ->where('numero_documento', '=', $find)
         ->get();
         if(count($existencia) >= 1) {
             return response()->json(["message"=>"Ya Existen Personas Registradas"]);
@@ -68,12 +68,12 @@ class PersonaController extends Controller
 
         //CREAR PERSONA
         $new_persona= new Persona();
-        $new_persona->tipo_Documento = $request->tipo_Documento;
-        $new_persona->numero_Documento = $request->numero_Documento;
+        $new_persona->tipo_documento = $request->tipo_documento;
+        $new_persona->numero_documento = $request->numero_documento;
         $new_persona->nombre = $request->nombre;
         $new_persona->apellido = $request->apellido;
-        $new_persona->lugar_Nacimiento = $request->lugar_Nacimiento;
-        $new_persona->fecha_Nacimiento = $request->fecha_Nacimiento;
+        $new_persona->lugar_nacimiento = $request->lugar_nacimiento;
+        $new_persona->fecha_nacimiento = $request->fecha_nacimiento;
         $new_persona->save();
 
         $tipo = $request->input('tipo_funcionario');
@@ -147,12 +147,12 @@ class PersonaController extends Controller
     public function update($id,PersonaRequest  $request)
     {
         $persona= Persona::findOrFail($id);
-        $persona->tipo_Documento = $request->get('tipo_Documento');
-        $persona->numero_Documento = $request->get('numero_Documento');
+        $persona->tipo_documento = $request->get('tipo_documento');
+        $persona->numero_documento = $request->get('numero_documento');
         $persona->nombre = $request->get('nombre');
         $persona->apellido = $request->get('apellido');
-        $persona->lugar_Nacimiento = $request->get('lugar_Nacimiento');
-        $persona->fecha_Nacimiento = $request->get('fecha_Nacimiento');
+        $persona->lugar_nacimiento = $request->get('lugar_nacimiento');
+        $persona->fecha_nacimiento = $request->get('fecha_nacimiento');
 
 
         $persona->save();

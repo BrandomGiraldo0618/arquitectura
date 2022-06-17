@@ -30,8 +30,8 @@ class PartidoController extends Controller
     {
         $new_partido = new Partido();
         $new_partido->nombre=$request->nombre;
-        $new_partido->personaId_Rlegal=$request->personaId_Rlegal;
-        $new_partido->listaA_C=$request->listaA_C;
+        $new_partido->personaid_rlegal=$request->personaid_rlegal;
+        $new_partido->listaa_c=$request->listaa_c;
         $new_partido->save();
         return response()->json(['ok'=>true],Response::HTTP_CREATED);
 
@@ -60,8 +60,8 @@ class PartidoController extends Controller
     {
         $new_partido = Partido::findOrFail($partido);
         $new_partido->nombre = $request->get('nombre');
-        $new_partido->personaId_Rlegal = $request->get('personaId_Rlegal');
-        $new_partido->listaA_C = $request->get('listaA_C');   
+        $new_partido->personaid_rlegal = $request->get('personaid_rlegal');
+        $new_partido->listaa_c = $request->get('listaa_c');   
         $new_partido->save();
         return response()->json(['ok'=>true],Response::HTTP_CREATED);
 

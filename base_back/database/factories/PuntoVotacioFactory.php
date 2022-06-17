@@ -14,7 +14,7 @@ class PuntoVotacioFactory extends Factory
     public function definition()
     {
         return [
-            'nombre'=>$this->faker->title,
+            'nombre'=>$this->faker->text(10),
             'direccion'=>$this->faker->text(150)
         ];
     }

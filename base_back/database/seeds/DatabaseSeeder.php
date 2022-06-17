@@ -42,18 +42,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $persona = new Persona;
-        $persona->tipo_Documento = 'COD_PAIS';
-        $persona->numero_Documento = '57';
+        $persona->tipo_documento = 'COD_PAIS';
+        $persona->numero_documento = '57';
         $persona->nombre = 'República';
         $persona->apellido = 'Colombiana';
-        $persona->lugar_Nacimiento = 'Colombia';
-        $persona->fecha_Nacimiento = '20/07/1810';
+        $persona->lugar_nacimiento = 'Colombia';
+        $persona->fecha_nacimiento = '20/07/1810';
         $persona->save();
 
         $partido = new Partido;
         $partido->nombre = 'Voto en Blanco';
-        $partido->personaId_Rlegal = $persona->id;
-        $partido->listaA_C = false;
+        $partido->personaid_rlegal = $persona->id;
+        $partido->listaa_c = false;
         $partido->save();
 
     }

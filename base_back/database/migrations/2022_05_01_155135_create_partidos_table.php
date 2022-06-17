@@ -16,8 +16,8 @@ class CreatePartidosTable extends Migration
         Schema::create('partidos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->unsignedInteger('personaId_Rlegal');
-            $table->boolean('listaA_C');
+            $table->unsignedInteger('personaid_rlegal');
+            $table->boolean('listaa_c');
             $table->timestamps();
         });
     }

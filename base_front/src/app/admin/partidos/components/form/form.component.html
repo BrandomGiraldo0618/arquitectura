@@ -54,20 +54,20 @@
                         <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
                     </div>
                     <div class="form-input">
-                        <label for="personaId_Rlegal" class="label-input">Representante Legal *</label>
-                        <select class="form-control" id="personaId_Rlegal" formControlName="personaId_Rlegal" aria-placeholder="Seleccionar">
+                        <label for="personaid_rlegal" class="label-input">Representante Legal *</label>
+                        <select class="form-control" id="personaid_rlegal" formControlName="personaid_rlegal" aria-placeholder="Seleccionar">
                             <option value="" selected>Seleccionar</option>
-                            <option value="{{representante.id}}" *ngFor="let representante of representantes">{{representante.numero_Documento}} - {{representante.nombre}} {{representante.apellido}}</option>
+                            <option value="{{representante.id}}" *ngFor="let representante of representantes">{{representante.numero_documento}} - {{representante.nombre}} {{representante.apellido}}</option>
                         </select>
-                        <app-validation-error [form]="form" [field]="'personaId_Rlegal'"></app-validation-error>
+                        <app-validation-error [form]="form" [field]="'personaid_rlegal'"></app-validation-error>
                     </div>
                     <div class="form-input">
-                        <label for="listaA_C" class="label-input">Tipo de Lista *</label>
-                        <select class="form-control" id="listaA_C" formControlName="listaA_C" aria-placeholder="Seleccionar">
+                        <label for="listaa_c" class="label-input">Tipo de Lista *</label>
+                        <select class="form-control" id="listaa_c" formControlName="listaa_c" aria-placeholder="Seleccionar">
                             <option value="" selected>Seleccionar</option>
                             <option value="{{lista.id}}" *ngFor="let lista of listas">{{lista.nombre}}</option>
                         </select>
-                        <app-validation-error [form]="form" [field]="'listaA_C'"></app-validation-error>
+                        <app-validation-error [form]="form" [field]="'listaa_c'"></app-validation-error>
                     </div>
                 </div>
 

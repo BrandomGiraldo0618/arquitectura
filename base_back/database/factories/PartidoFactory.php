@@ -16,8 +16,8 @@ class PartidoFactory extends Factory
     {
         return [
             'nombre'=>$this->faker->name(),
-            'personaId_Rlegal' => $this->faker->numberBetween(1,10),
-            'listaA_C'=>$this->faker->boolean(),
+            'personaid_rlegal' => $this->faker->numberBetween(1,10),
+            'listaa_c'=>$this->faker->boolean(),
             'tipo_id'=> Tipo::all()->random()->id,
         ];
     }

@@ -36,7 +36,7 @@ class VotoController extends Controller
         //Que el votante exitasta como votante
 
         $cedula =  $request->input('numero_identificacion');
-        $persona = Persona::where('numero_Documento', $cedula)->first();
+        $persona = Persona::where('numero_documento', $cedula)->first();
         $votante= Votante::where('persona_id',$persona->id)->first();
         if(null != $votante){
             //Que no tenga un voto registrado de ese tipo (senado - camara)
@@ -73,7 +73,7 @@ class VotoController extends Controller
 
     public function validarVotante($documento){
 
-        $persona = Persona::where('numero_Documento', $documento)->first();
+        $persona = Persona::where('numero_documento', $documento)->first();
 
         if(null != $persona){
             $votante= Votante::where('persona_id',$persona->id)->first();
@@ -93,7 +93,7 @@ class VotoController extends Controller
 
         $partido = Partido::find($partido_id);
 
-        if($partido->listaA_C==true){
+        if($partido->listaa_c==true){
 
             $candidatos = DB::Select("SELECT *
                                         FROM Candidatos c
@@ -148,7 +148,7 @@ class VotoController extends Controller
     {
         $totalVotosCamaraPartido = DB::Select(" SELECT
                                                     p.nombre AS nombrePartido, 
-                                                    p.listaA_C AS tipoLista,
+                                                    p.listaa_c AS tipoLista,
                                                     COUNT(v.id) AS totalVotosPartido
                                                 FROM votos v
                                                 INNER JOIN partidos p
@@ -264,7 +264,7 @@ class VotoController extends Controller
 
         $totalVotosSenadoPartido = DB::Select("SELECT
                                                 p.nombre nombrePartido, 
-                                                p.listaA_C tipoLista,
+                                                p.listaa_c tipoLista,
                                                 COUNT(v.id) AS totalVotosPartido
                                             FROM votos v
                                             INNER JOIN partidos p

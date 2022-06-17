@@ -49,19 +49,19 @@
                 <hr class="m-0">
                 <div class="form-data form-data-grid max-width-form m-auto">
                     <div class="form-input">
-                        <label for="tipo_Documento" class="label-input">Tipo de  Documento *</label>
-                        <select class="form-control" id="tipo_Documento" formControlName="tipo_Documento" aria-placeholder="Seleccionar">
+                        <label for="tipo_documento" class="label-input">Tipo de  Documento *</label>
+                        <select class="form-control" id="tipo_documento" formControlName="tipo_documento" aria-placeholder="Seleccionar">
                             <option value="" selected>Seleccionar</option>
                             <option value="CC" >Cédula de Ciudadanía</option>
                             <option value="TI" >Tarjeta de Identidad </option>
                         </select>
-                        <app-validation-error [form]="form" [field]="'tipo_Documento'"></app-validation-error>
+                        <app-validation-error [form]="form" [field]="'tipo_documento'"></app-validation-error>
                     </div>
                     <div class="form-input">
-                        <label for="numero_Documento" class="label-input">Número de Documento*</label>
+                        <label for="numero_documento" class="label-input">Número de Documento*</label>
                         <input type="text" onkeydown="return /[0-9, ]/i.test(event.key)" class="form-control"  placeholder="Ingresar Número Documento"
-                        maxlength="10" minlength="4" id="numero_Documento" formControlName="numero_Documento">
-                        <app-validation-error [form]="form" [field]="'numero_Documento'"></app-validation-error>
+                        maxlength="10" minlength="4" id="numero_documento" formControlName="numero_documento">
+                        <app-validation-error [form]="form" [field]="'numero_documento'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="nombre" class="label-input">Nombre *</label>
@@ -74,14 +74,14 @@
                         <app-validation-error [form]="form" [field]="'apellido'"></app-validation-error>
                     </div>
                     <div class="form-input">
-                        <label for="lugar_Nacimiento" class="label-input">Lugar de Nacimiento</label>
-                        <input type="text" onkeydown="return /[a-z, A-Z, ñÑáéíóúÁÉÍÓÚ ]/i.test(event.key)" class="form-control" placeholder="Ingresar lugar de Nacimiento" id="lugar_Nacimiento" formControlName="lugar_Nacimiento">
-                        <app-validation-error [form]="form" [field]="'lugar_Nacimiento'"></app-validation-error>
+                        <label for="lugar_nacimiento" class="label-input">Lugar de Nacimiento</label>
+                        <input type="text" onkeydown="return /[a-z, A-Z, ñÑáéíóúÁÉÍÓÚ ]/i.test(event.key)" class="form-control" placeholder="Ingresar lugar de Nacimiento" id="lugar_nacimiento" formControlName="lugar_nacimiento">
+                        <app-validation-error [form]="form" [field]="'lugar_nacimiento'"></app-validation-error>
                     </div>
                     <div class="form-input">
-                        <label for="fecha_Nacimiento" class="label-input">Fecha de Nacimiento *</label>
-                        <input type="date" max="{{fechaNac | date:'yyyy-MM-dd'}}" class="form-control" placeholder="Ingresar Fecha de Nacimiento" id="fecha_Nacimiento" formControlName="fecha_Nacimiento" onkeydown="return false">
-                        <app-validation-error [form]="form" [field]="'fecha_Nacimiento'"></app-validation-error>
+                        <label for="fecha_nacimiento" class="label-input">Fecha de Nacimiento *</label>
+                        <input type="date" max="{{fechaNac | date:'yyyy-MM-dd'}}" class="form-control" placeholder="Ingresar Fecha de Nacimiento" id="fecha_nacimiento" formControlName="fecha_nacimiento" onkeydown="return false">
+                        <app-validation-error [form]="form" [field]="'fecha_nacimiento'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="tipo_funcionario" class="label-input">Tipo de persona*</label>

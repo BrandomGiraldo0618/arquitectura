@@ -9,7 +9,7 @@ class Persona extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'tipo_Documento','numero_Documento','nombre','apellido','lugar_nacimiento','fecha_nacimiento',
+        'tipo_documento','numero_documento','nombre','apellido','lugar_nacimiento','fecha_nacimiento',
     ];
 
     public function candidato()

@@ -26,8 +26,8 @@ class PartidoRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
-            'personaId_Rlegal' => 'required',
-            'listaA_C' => 'required'
+            'personaid_rlegal' => 'required',
+            'listaa_c' => 'required'
         ];
     }
 }

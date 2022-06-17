@@ -24,12 +24,12 @@ class PersonaRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo_Documento' => 'required',
-            'numero_Documento' => 'required',
+            'tipo_documento' => 'required',
+            'numero_documento' => 'required',
             'nombre' => 'required',
             'apellido' => 'required',
-            'lugar_Nacimiento' => 'required',
-            'fecha_Nacimiento' => 'required|date',
+            'lugar_nacimiento' => 'required',
+            'fecha_nacimiento' => 'required|date',
 
         ];
     }
