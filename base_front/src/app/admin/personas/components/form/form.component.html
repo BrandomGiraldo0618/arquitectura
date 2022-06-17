@@ -50,7 +50,8 @@
                 <div class="form-data form-data-grid max-width-form m-auto">
                     <div class="form-input">
                         <label for="tipo_documento" class="label-input">Tipo de  Documento *</label>
-                        <select class="form-control" id="tipo_documento" formControlName="tipo_documento" aria-placeholder="Seleccionar">
+                        <select class="form-control" id="tipo_documento" formControlName="tipo_documento" 
+                        aria-placeholder="Seleccionar" (change)="tipoDocumentoChange()">
                             <option value="" selected>Seleccionar</option>
                             <option value="CC" >Cédula de Ciudadanía</option>
                             <option value="TI" >Tarjeta de Identidad </option>
