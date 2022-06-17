@@ -17,7 +17,6 @@ export class LayoutComponent implements OnInit {
 
 	collapseMenu = false;
     openMenu = '';
-
 	user: any;
 	openProfile = false;
 	mediaQuery = 'lg';

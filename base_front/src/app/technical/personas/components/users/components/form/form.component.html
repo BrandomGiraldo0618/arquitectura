@@ -50,7 +50,7 @@
                 <div class="form-data form-data-grid max-width-form m-auto">
                     <div class="form-input">
                         <label for="name" class="label-input">Nombre y Apellidos *</label>
-                        <input type="text" class="form-control" placeholder="Ingresar Nombres" id="name" formControlName="name">
+                        <input type="text" onkeydown="return /[a-z, A-Z ]/i.test(event.key)" class="form-control" placeholder="Ingresar Nombres" id="name" formControlName="name">
                         <app-validation-error [form]="form" [field]="'name'"></app-validation-error>
                     </div>
 
@@ -61,12 +61,12 @@
                     </div>
                     <div class="form-input">
                         <label for="email" class="label-input">E-mail personal *</label>
-                        <input type="text" class="form-control" placeholder="Ingresar correo" id="email" formControlName="email">
+                        <input type="text" ng-pattern=" ^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$" autocomplete="off" class="form-control" placeholder="Ingresar correo" id="email" formControlName="email">
                         <app-validation-error [form]="form" [field]="'email'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="cellphone" class="label-input">Teléfono / Celular </label>
-                        <input type="text" class="form-control" placeholder="Ingresar Número" id="cellphone" formControlName="cellphone">
+                        <input type="text" maxlength="10" minlength="7" onkeydown="return /[0-1,]/i.test(event.key)" class="form-control" placeholder="Ingresar Número" id="cellphone" formControlName="cellphone">
                         <app-validation-error [form]="form" [field]="'cellphone'"></app-validation-error>
                     </div>
                     <div class="form-input">

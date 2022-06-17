@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApirestService} from '@core/services/apirest.service';
+import { SingletonService } from '@core/services/singleton.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +10,12 @@ import {ApirestService} from '@core/services/apirest.service';
 export class DashboardComponent implements OnInit {
 
 	companies = [];
-
   	constructor(
-		private service: ApirestService
+		public singleton: SingletonService,
+		public service: ApirestService
 	  ) { }
 
   	ngOnInit(): void 
   	{
-    		
   	}
 }

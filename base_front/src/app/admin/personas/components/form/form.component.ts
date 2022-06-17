@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
 	
 	roles = [];
 
-  mesas = [];
+  	mesas = [];
 	tipos_candidatos = [];
 	partidos = [];
 	puntos_votaciones = [];
@@ -27,6 +27,7 @@ export class FormComponent implements OnInit {
 	votante = false;
 	jurado = false;
 	candidato = false;
+	edad = 18;
 
 	constructor(public route: ActivatedRoute,
 				public router: Router,
@@ -42,15 +43,15 @@ export class FormComponent implements OnInit {
 				this.getPersona();
 			}
 		});
-
 		this.buildForm();
+
 	}
 
 	ngOnInit(): void {
 		this.getTiposCandidatos();
 		this.getPartidos();
 		this.getPuntoVotacion();
-		this.validateDate();
+		this.validateDate(this.edad);
 	}
 
 	/**
@@ -62,22 +63,22 @@ export class FormComponent implements OnInit {
 	private buildForm() {
 		this.form = this.formBuilder.group({
 			id: [0],
-			tipo_documento: ['', [Validators.required]],
+			tipo_documento: ['', []],
 			numero_documento: ['', [Validators.required]],
 			nombre: ['', [Validators.required]],
 			apellido: ['', [Validators.required]],
 			lugar_nacimiento: ['', [Validators.required]],
 			fecha_nacimiento: ['', [Validators.required]],
-			mesa_id: [''],
-			tipo_funcionario: [''],
+			mesa_id: ['', [Validators.required]],
+			tipo_funcionario: ['', [Validators.required]],
 			partido_id: [''],
 			tipo_candidato_id: [''],
-			punto_votacion_id: ['']
+			punto_votacion_id: ['', [Validators.required]]
 		});
 	}
-	validateDate(){
+	validateDate(edad){
 		const fechaActual = new Date();
-		const añoActual = fechaActual.getFullYear()-18;
+		const añoActual = fechaActual.getFullYear()-edad;
 		const hoy = fechaActual.getDate();
 		const mesActual = fechaActual.getMonth() + 1;
 		this.fechaNac = `${añoActual}-${mesActual}-${hoy}`;
@@ -167,21 +168,33 @@ export class FormComponent implements OnInit {
 				break;
 		}
 	}
+	tipoDocumentoChange(){
+		let tipo_document = document.getElementById('tipo_documento') as HTMLInputElement;
 
+		if(tipo_document.value != "CC"){
+			this.edad = 14;
+			//this.validateDate(this.edad);
+			this.validateDate(this.edad);
+		}else{
+			//this.edad = 14;
+			this.validateDate(this.edad);
+		}
+	}
 	getPersona(){
 		this.service.queryGet(`persona/${this.personaId}`).subscribe(
 			(response: any) => {
 				let result = response;
+				result = result[0];
 				this.form.setValue({
-					id: result.id ,
-					tipo_documento: result.tipo_documento ,
+					id: this.personaId,
+					tipo_documento: result.tipo_documento,
 					numero_documento: result.numero_documento ,
 					nombre: result.nombre ,
 					apellido: result.apellido,
 					lugar_nacimiento: result.lugar_nacimiento,
 					fecha_nacimiento: result.fecha_nacimiento,
 					mesa_id: '1',
-					tipo_funcionario: '1',
+					tipo_funcionario: result.tipo_funcionario_id,
 					partido_id: '1',
 					tipo_candidato_id: '1',
 					punto_votacion_id: '1',
