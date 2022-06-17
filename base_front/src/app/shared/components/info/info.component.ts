@@ -12,6 +12,7 @@ export class InfoComponent implements OnInit {
   totalVotos: 0;
   totalVotosCamara:0;
   totalVotosSenado:0;
+  totalHabilitados:0;
   constructor(
 		public singleton: SingletonService,
 		public service: ApirestService
@@ -30,6 +31,7 @@ export class InfoComponent implements OnInit {
 				this.totalVotos = response.total_votos;
         this.totalVotosCamara = response.total_votos_camara;
         this.totalVotosSenado = response.total_votos_senado;
+        this.totalHabilitados = response.total_habilitados;
 				this.singleton.updateLoading(false);
 			},
 			(err: any) => {
