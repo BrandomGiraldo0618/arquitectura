@@ -133,7 +133,23 @@ class PersonaController extends Controller
      */
     public function show($id)
     {
-        $persona= Persona::findOrFail($id);
+        $persona = DB::select("SELECT A.*,
+                            CASE
+                                WHEN (SELECT COUNT(*) FROM votantes WHERE persona_id = A.id) = 1 THEN 'Votante'
+                                WHEN (SELECT COUNT(*) FROM candidatos WHERE persona_id = A.id) = 1 THEN 'Candidato'
+                                WHEN (SELECT COUNT(*) FROM jurados WHERE persona_id = A.id) = 1 THEN 'Jurado'
+                                ELSE 'Representante Legal'
+                            END AS tipo_funcionario,
+                            CASE
+                                WHEN (SELECT COUNT(*) FROM votantes WHERE persona_id = A.id) = 1 THEN 1
+                                WHEN (SELECT COUNT(*) FROM jurados WHERE persona_id = A.id) = 1 THEN 2
+                                WHEN (SELECT COUNT(*) FROM candidatos WHERE persona_id = A.id) = 1 THEN 3
+                                ELSE 4
+                            END AS tipo_funcionario_id,
+                            A.tipo_documento
+                            FROM personas AS A
+                            WHERE A.id = $id"); 
+        
         return $persona;
     }
 
