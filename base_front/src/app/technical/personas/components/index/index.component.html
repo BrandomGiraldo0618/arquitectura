@@ -4,17 +4,17 @@
             <div class="d-flex align-items-center">
                 <div class="d-flex align-items-center b-right mr-4 pr-4">
                     <!-- <i class="las la-user color-primary fs-big mr-3"></i> -->
-                    <p class="f-subtitle color-primary fs-normal nowrap">Funcionarios</p>
+                    <p class="f-subtitle color-primary fs-normal nowrap">Personas</p>
                 </div>
-                <p class="color-gray3 x-small">asEstos son todas los funcionarios en la plataforma, puedes crear, editar, consultar información o eliminar.</p>
+                <p class="color-gray3 x-small">Estos son todas las personas que se encuentran registrados en la plataforma.<br> Puedes: <b> crear, editar, consultar información o eliminar.</b></p>
             </div>
         </div>
         <div class="col-lg-3">
             <div class="pr-md-4">
                 <div class="row d-flex justify-content-md-end justify-content-between align-items-center">
                     <span class="d-md-none color-primary fs-normal"><b>18</b> entradas</span>
-                    <button class="btn btn-primary btn--icon" routerLink="/tecnico/personas/nuevo">
-						<i class="las la-plus fs-normal mr-2 text-white"></i> Nuevo funcionario
+                    <button class="btn btn-primary btn--icon" routerLink="/admin/personas/nuevo">
+						<i class="las la-plus fs-normal mr-2 text-white"></i> Nueva Persona
 					</button>
                 </div>
                 <div class="row mt-3 d-md-none">
@@ -33,13 +33,13 @@
             <div class="col-12">
                 <div class="row px-4 py-3 justify-content-between align-items-center">
                     <div class="col-12 col-md-6">
-                        <h4 class="mt-2 color-primary">Listado de funcionarios</h4>
+                        <h4 class="mt-2 color-primary">Listado de Personas</h4>
                     </div>
                     <div class="col-12 col-md-6 p-md-0">
                         <form [formGroup]="formSearch" class="form-group row w-100 mr-0">
                             <div class="col-12 col-lg-6 form-group mb-0">
-                                <label class="col-form-label color-gray3" for="search">Buscar funcionarios</label>
-                                <input id="search" class="form-control" type="text" formControlName="search" placeholder="Buscar un funcionario">
+                                <label class="col-form-label color-gray3" for="search">Buscar Personas</label>
+                                <input id="search" class="form-control" type="text" formControlName="search" placeholder="Buscar una persona">
                             </div>
                             <div class="col-12 col-lg-6 form-group mb-0">
                                 <label for="resultados-pagina" id="paginador_tabla" class="col-form-label color-gray3">Número de resultados por
@@ -86,7 +86,7 @@
                                     {{funcionario.tipo_funcionario}}
                                 </td>
                                 <td>
-                                    <a class="mr-2" routerLink="/tecnico/personas/editar/{{funcionario.id}}" tooltip="Editar">
+                                    <a class="mr-2" routerLink="/admin/personas/editar/{{funcionario.id}}" tooltip="Editar">
                                         <i class="las la-pen"></i>
                                     </a>
                                     <a href="javascript:;" class="mr-2" (click)="confirmDelete(funcionario.id)" tooltip="Eliminar">
@@ -109,7 +109,8 @@
                         </div>
                     </nav>
                     <span class="txt-dgold text-right">Página {{totalPages.current_page}} de {{totalPages.last_page}}</span>
-                </div>-->
+                </div>
+                -->
             </div>
         </div>
     </div>
