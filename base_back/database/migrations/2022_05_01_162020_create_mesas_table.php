@@ -19,7 +19,7 @@ class CreateMesasTable extends Migration
             $table->unsignedInteger('punto_votacio_id');
             $table->timestamps();
 
-            $table->foreign('punto_votacio_id')->references('id')->on('punto_votacio');  
+            $table->foreign('punto_votacio_id')->references('id')->on('punto_votacio')->onDelete('cascade');
         });
     }
 

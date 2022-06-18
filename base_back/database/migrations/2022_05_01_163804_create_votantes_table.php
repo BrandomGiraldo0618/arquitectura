@@ -20,8 +20,8 @@ class CreateVotantesTable extends Migration
             $table->unsignedInteger('mesa_id');
             $table->timestamps();
 
-            $table->foreign('mesa_id')->references('id')->on('mesas');  
-            $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');;  
+            $table->foreign('mesa_id')->references('id')->on('mesas')->onDelete('cascade');
+            $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
 
         });
     }

@@ -19,12 +19,12 @@ class CreateCandidatosTable extends Migration
             $table->integer('numero_inscripcion');
             $table->unsignedInteger('partido_id');
             $table->unsignedInteger('tipo_id');
-            
+
             $table->timestamps();
 
             $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
-            $table->foreign('partido_id')->references('id')->on('partidos');          
-            $table->foreign('tipo_id')->references('id')->on('tipos');
+            $table->foreign('partido_id')->references('id')->on('partidos')->onDelete('cascade');
+            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade');
         });
     }
 

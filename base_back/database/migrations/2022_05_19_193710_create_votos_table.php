@@ -15,19 +15,19 @@ class CreateVotosTable extends Migration
     {
         Schema::create('votos', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedInteger('votante_id');
             $table->unsignedInteger('tipo_id');
             $table->unsignedInteger('partido_id');
             $table->unsignedInteger('candidato_id')->nullable();
-            
+
             $table->date('fecha');
             $table->timestamps();
 
-            $table->foreign('votante_id')->references('id')->on('votantes')->onDelete('cascade');         
-                    
-            $table->foreign('tipo_id')->references('id')->on('tipos');
-            $table->foreign('partido_id')->references('id')->on('partidos'); 
+            $table->foreign('votante_id')->references('id')->on('votantes')->onDelete('cascade');
+
+            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade');
+            $table->foreign('partido_id')->references('id')->on('partidos')->onDelete('cascade');
 
 
         });
