@@ -71,8 +71,8 @@ export class FormComponent implements OnInit {
 			fecha_nacimiento: ['', [Validators.required]],
 			mesa_id: ['', [Validators.required]],
 			tipo_funcionario: ['', [Validators.required]],
-			partido_id: [''],
-			tipo_candidato_id: [''],
+			partido_id: ['', [Validators.required]],
+			tipo_candidato_id: ['', [Validators.required]],
 			punto_votacion_id: ['', [Validators.required]]
 		});
 	}
@@ -91,15 +91,17 @@ export class FormComponent implements OnInit {
 
    getMesas() {
 	   let punto_id = document.getElementById('punto_votacion_id') as HTMLInputElement;
+		if(punto_id.value != ""){
+			this.service.queryGet(`mesa/consultar-por-punto-votacion/${punto_id.value}`).subscribe(
+				(response: any) => {
+					let result = response;
+					this.mesas = result;
+				},
+				(err: any) => {
+				}
+			);
+		}
 
-		this.service.queryGet(`mesa/consultar-por-punto-votacion/${punto_id.value}`).subscribe(
-			(response: any) => {
-				let result = response;
-				this.mesas = result;
-			},
-			(err: any) => {
-			}
-		);
 	}
 
    getTiposCandidatos() {
