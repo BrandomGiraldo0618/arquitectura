@@ -68,12 +68,13 @@
                 <div class="form-data form-data-grid max-width-form m-auto">
                     <div class="form-input">
                         <label for="email" class="label-input">E-mail personal *</label>
-                        <input type="text" ng-pattern="^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$" autocomplete="off" class="form-control" placeholder="Ingresar correo" id="email" formControlName="email">
-                        <app-validation-error [form]="form" [field]="'email'"></app-validation-error>
-                    </div>
+                        <input type="text" ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/"  
+                        class="form-control" placeholder="Ingresar correo" id="email" formControlName="email"
+                        ng-model="EmailAddress" required>
+                        <app-validation-error [form]="form" [field]="'email'"></app-validation-error>                    </div>
                     <div class="form-input">
                         <label for="phone" class="label-input">Teléfono / Celular *</label>
-                        <input type="text" onkeydown="return /[0-9, ]/i.test(event.key)" maxlength="10" minlength="7" class="form-control" placeholder="Ingresar Número" id="phone" formControlName="phone">
+                        <input type="number" onkeydown="return /[0-9, {7-10} ]/i.test(event.key)"  maxlength="10" minlength="7" class="form-control" placeholder="Ingresar Número" id="phone" formControlName="phone">
                         <app-validation-error [form]="form" [field]="'phone'"></app-validation-error>
                     </div>
                 </div>

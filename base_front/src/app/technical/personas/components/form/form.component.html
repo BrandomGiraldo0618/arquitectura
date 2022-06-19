@@ -60,13 +60,13 @@
                     </div>
                     <div class="form-input">
                         <label for="numero_documento" class="label-input">Número de Documento*</label>
-                        <input type="text" onkeydown="return /[0-9, ]/i.test(event.key)" class="form-control"  placeholder="Ingresar Número Documento"
+                        <input type="text" ng-pattern="/^[0-9]{7,10}$/" class="form-control"  placeholder="Ingresar Número Documento"
                         maxlength="10" minlength="4" id="numero_documento" formControlName="numero_documento">
                         <app-validation-error [form]="form" [field]="'numero_documento'"></app-validation-error>
                     </div>
                     <div class="form-input">
                         <label for="nombre" class="label-input">Nombre *</label>
-                        <input type="text" onkeydown="return /[a-z,A-Z,ñÑáéíóúÁÉÍÓÚ]/i.test(event.key)" class="form-control" placeholder="Ingresar nombre" id="nombre"  formControlName="nombre">
+                        <input type="text" onkeydown="return /[a-z ,A-Z ,ñÑáéíóúÁÉÍÓÚ, ]/i.test(event.key)" class="form-control" placeholder="Ingresar nombre" id="nombre"  formControlName="nombre">
                         <app-validation-error [form]="form" [field]="'nombre'"></app-validation-error>
                     </div>
                     <div class="form-input">

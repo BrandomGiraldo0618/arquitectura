@@ -43,8 +43,8 @@ export class FormComponent implements OnInit {
 				this.getPersona();
 			}
 		});
-
 		this.buildForm();
+
 	}
 
 	ngOnInit(): void {
@@ -63,7 +63,7 @@ export class FormComponent implements OnInit {
 	private buildForm() {
 		this.form = this.formBuilder.group({
 			id: [0],
-			tipo_documento: ['', [Validators.required]],
+			tipo_documento: ['', []],
 			numero_documento: ['', [Validators.required]],
 			nombre: ['', [Validators.required]],
 			apellido: ['', [Validators.required]],
@@ -71,8 +71,8 @@ export class FormComponent implements OnInit {
 			fecha_nacimiento: ['', [Validators.required]],
 			mesa_id: ['', [Validators.required]],
 			tipo_funcionario: ['', [Validators.required]],
-			partido_id: [''],
-			tipo_candidato_id: [''],
+			partido_id: ['', [Validators.required]],
+			tipo_candidato_id: ['', [Validators.required]],
 			punto_votacion_id: ['', [Validators.required]]
 		});
 	}
@@ -91,15 +91,17 @@ export class FormComponent implements OnInit {
 
    getMesas() {
 	   let punto_id = document.getElementById('punto_votacion_id') as HTMLInputElement;
+		if(punto_id.value != ""){
+			this.service.queryGet(`mesa/consultar-por-punto-votacion/${punto_id.value}`).subscribe(
+				(response: any) => {
+					let result = response;
+					this.mesas = result;
+				},
+				(err: any) => {
+				}
+			);
+		}
 
-		this.service.queryGet(`mesa/consultar-por-punto-votacion/${punto_id.value}`).subscribe(
-			(response: any) => {
-				let result = response;
-				this.mesas = result;
-			},
-			(err: any) => {
-			}
-		);
 	}
 
    getTiposCandidatos() {
@@ -184,16 +186,17 @@ export class FormComponent implements OnInit {
 		this.service.queryGet(`persona/${this.personaId}`).subscribe(
 			(response: any) => {
 				let result = response;
+				result = result[0];
 				this.form.setValue({
-					id: result.id ,
-					tipo_documento: result.tipo_documento ,
+					id: this.personaId,
+					tipo_documento: result.tipo_documento,
 					numero_documento: result.numero_documento ,
 					nombre: result.nombre ,
 					apellido: result.apellido,
 					lugar_nacimiento: result.lugar_nacimiento,
 					fecha_nacimiento: result.fecha_nacimiento,
 					mesa_id: '1',
-					tipo_funcionario: '1',
+					tipo_funcionario: result.tipo_funcionario_id,
 					partido_id: '1',
 					tipo_candidato_id: '1',
 					punto_votacion_id: '1',
