@@ -19,15 +19,15 @@
             </div>
             <div class="box bg-white mb-4 d-flex align-items-left justify-content-left d-flex p-5" *ngIf="tipo != 0">
                 <ul class="w-100">
-                    <li class="mb-4" *ngFor="let info of info_tipos">
+                    <li class="mb-2" *ngFor="let info of info_tipos">
                         <table>
                             <tr>
                                 <td style="width: 200px;">
                                     <strong>{{info.nombre_partido}}</strong>
                                 </td>
                                 <td style="width: 90%;">
-                                    <div class="progress" *ngIf="!info.paso_umbral">
-                                        <div class="progress-bar" id="p" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" >{{info.total_votos_partido}}</div>
+                                    <div class="progress" *ngIf="!info.paso_umbral" [title]="'Votos: ' + info.total_votos_partido">
+                                        <div class="progress-bar bg-danger" id="p" role="progressbar" [attr.style]="info.width_style" aria-valuenow="25" aria-valuemin="0" >{{info.width}}</div>
                                     </div>
                                 </td>
                             </tr>
