@@ -1,101 +1,40 @@
 <div class="row dashboard-row-graphics">
     <div class="col-lg-12 pl-lg-1">
-        <form [formGroup]="form" class="inn-form" (ngSubmit)="report($event)" novalidate>
+        <div class="inn-form">
             <div class="box bg-white mb-4 d-flex align-items-center justify-content-center d-flex p-5">
-                <div class="col-lg-2 form-group mb-0">
-                    <label class="color-primary">Filtro de gráficas</label>
+                <div class="col-lg-1 form-group mb-0">
+                    <label class="color-primary">Filtro</label>
                 </div>
-                <div class="col-lg-2 form-group mb-0" *ngIf="selectCompany">
+                <div class="col-lg-2 form-group mb-0">
                     <label id="paginador_tabla" class="color-primary">
-                        Cliente:</label>
-                    <select #company_id class="form-control" formControlName="company_id" (change)='changeSelectCompany(company_id.value)'>
+                        Tipo:</label>
+                    <select class="form-control" id="tipo" (change)="getReporte();">
                         <option value="">Seleccionar</option>
-                        <option [value]="company.id" *ngFor="let company of companies">{{company.name}}</option>
+                        <option value="1">Cámara</option>
+                        <option value="2">Senado</option>
                     </select>
-                    <app-validation-error [form]="form" [field]="'company_id'"></app-validation-error>
                 </div>
-                <div class="col-lg-2 form-group mb-0">
-                    <label id="range_date" class="color-primary">
-                        Rango de fechas:</label>
-                    <input type="text" placeholder="DD/MM/AAAA" class="form-control" #range_date formControlName="range_date" [bsConfig]="{withTimepicker: true, rangeInputFormat : 'MMMM Do YYYY, h:mm a', dateInputFormat: 'MMMM Do YYYY, h:mm a'}" bsDaterangepicker>
-                    <app-validation-error [form]="form" [field]="'range_date'"></app-validation-error>
-
-                </div>
-
-                <div class="col-lg-2 form-group mb-0" *ngIf="selectDevice">
-                    <label id="device_id" class="color-primary">
-                        Estación:</label>
-                    <select class="form-control" #device_id formControlName="device_id" (change)='changeSelectDevice(device_id.value)'>
-                        <option value="">Seleccionar</option>
-                        <option [value]="device.id"  [name]="device.name" *ngFor="let device of devices">{{device.name}}</option>
-                    </select>
-                    <app-validation-error [form]="form" [field]="'device_id'"></app-validation-error>
-                </div>
-                <div class="col-lg-2 form-group mb-0">
-                    <label id="frequency" class="color-primary">
-                        Frecuencia:</label>
-                    <select class="form-control" #frequency formControlName="frequency">
-                        <option value="">Seleccionar</option>
-                        <option [value]="frequency.id" *ngFor="let frequency of frequencies">{{frequency.name}}</option>
-                    </select>
-                    <app-validation-error [form]="form" [field]="'frequency'"></app-validation-error>
-                </div>
-                <div class="col-lg-2 form-group mb-0">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="d-none d-md-block">Filtrar</span>
-                    </button>
-                </div>
+                <div class="col-lg-2 form-group mb-0"></div>
+                <div class="offset-6"></div>
             </div>
-        </form>
-
-
-    </div>
-    <div class="col-lg-12 pl-lg-1" *ngIf="showDetail">
-        <div class="box bg-white mb-4 d-flex align-items-center justify-content-center d-flex p-5">
-            <h2 class="col-lg-5">{{device.name}}</h2>
-            <div class="col-lg-2 form-group mb-0">
-                <label class="color-primary">Equipo / Estación de Monitoreo</label>
+            <div class="box bg-white mb-4 d-flex align-items-left justify-content-left d-flex p-5" *ngIf="tipo != 0">
+                <ul class="w-100">
+                    <li class="mb-4" *ngFor="let info of info_tipos">
+                        <table>
+                            <tr>
+                                <td style="width: 200px;">
+                                    <strong>{{info.nombre_partido}}</strong>
+                                </td>
+                                <td style="width: 90%;">
+                                    <div class="progress" *ngIf="!info.paso_umbral">
+                                        <div class="progress-bar" id="p" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" >{{info.total_votos_partido}}</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
             </div>
-
-            <div class="col-lg-2 form-group mb-0">
-                <button class="btn btn-light color-primary">
-                    <i class="las la-broadcast-tower"></i>Ver en mapa
-                </button>
-            </div>
-            <div class="col-lg-2 form-group mb-0 ">
-                <button class="btn btn-light" (click)="showComment()">
-                    <i class="las la-comment-dots fs-normal mr-2"></i>
-                    <span class="position-absolute  start-100 translate-end badge badge_comment badge-primary rounded-circle">
-                            3
-                    </span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-12 pl-lg-1">
-        <div class="box bg-white mb-4">
-            <div id="chart-ica" *ngIf="showChartIca"></div>
-        </div>
-    </div>
-    <div class="col-lg-6 pl-lg-1">
-        <div class="box bg-white mb-4">
-            <div id="chart-temperature" *ngIf="showChartTemperature"></div>
-        </div>
-    </div>
-    <div class="col-lg-6 pl-lg-1">
-        <div class="box bg-white mb-4">
-            <div id="chart-humidity" *ngIf="showChartHumidity"></div>
-        </div>
-    </div>
-    <div class="col-lg-6 pl-lg-1">
-        <div class="box bg-white mb-4">
-            <div id="chart-pressure" *ngIf="showChartPressure"></div>
-        </div>
-    </div>
-    <div class="col-lg-6 pl-lg-1">
-        <div class="box bg-white mb-4">
-            <div id="chart-elevation" *ngIf="showChartElevation"></div>
         </div>
     </div>
 </div>
-<app-modal-comment [opened]="opened"></app-modal-comment>

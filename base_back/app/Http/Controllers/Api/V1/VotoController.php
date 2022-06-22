@@ -155,8 +155,8 @@ class VotoController extends Controller
                                                     ON p.id = v.partido_id
                                                 WHERE v.tipo_id = 1
                                                 GROUP BY p.nombre,
-                                                p.listaa_c;
-                                            ");
+                                                p.listaa_c
+                                                ORDER BY COUNT(v.id) DESC;");
 
         $totalVotosCamara = DB::Select("SELECT 
                                             COUNT(v.id) AS total_votos_camara
@@ -245,9 +245,7 @@ class VotoController extends Controller
 
                 $totalVotosCamaraPartido[$i]->candidatos_ganaron = $candidatos_final;                             
             }else{
-
                 $totalVotosCamaraPartido[$i]->candidatos_ganaron = $candidatos;
-
             }
         }
 
@@ -265,20 +263,18 @@ class VotoController extends Controller
                                                 ON p.id = v.partido_id
                                             WHERE v.tipo_id = 2
                                             GROUP BY p.nombre,
-                                                    p.listaa_c;
-                                            ");    
+                                                    p.listaa_c 
+                                            ORDER BY COUNT(v.id) DESC;");
 
         $totalVotosSenado = DB::Select("SELECT 
                                             COUNT(v.id) AS total_votos_senado
                                         FROM votos v
-                                        WHERE v.tipo_id = 2;
-                                        ");    
+                                        WHERE v.tipo_id = 2;");    
 
         $totalPartidosSenado = DB::Select("SELECT 
                                                 COUNT(1) AS total_partidos_senado
                                             FROM partidos
-                                            WHERE tipo_id = 2;
-                                        ");
+                                            WHERE tipo_id = 2;");
 
         $candidatosSenado = DB::Select("SELECT 
                                             p.nombre AS nombre_partido,
@@ -296,9 +292,8 @@ class VotoController extends Controller
                                             pr.nombre,
                                             c.id
                                         ORDER BY 
-                                            COUNT(v.id),
-                                            c.id;
-                                        ");                       
+                                            COUNT(v.id) DESC,
+                                            c.id;");                       
 
         $totalVotosSenado = $totalVotosSenado[0]->total_votos_senado;
         $totalPartidosSenado = $totalPartidosSenado[0]->total_partidos_senado;     

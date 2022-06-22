@@ -71,9 +71,9 @@ export class FormComponent implements OnInit {
 			fecha_nacimiento: ['', [Validators.required]],
 			mesa_id: ['', [Validators.required]],
 			tipo_funcionario: ['', [Validators.required]],
-			partido_id: ['', [Validators.required]],
-			tipo_candidato_id: ['', [Validators.required]],
-			punto_votacion_id: ['', [Validators.required]]
+			partido_id: [''],
+			tipo_candidato_id: [''],
+			punto_votacion_id: ['']
 		});
 	}
 	validateDate(edad){
@@ -214,7 +214,7 @@ export class FormComponent implements OnInit {
 	 */
 
 	save(event: Event) {
-
+		
 		event.preventDefault();
 		if (this.form.invalid) {
 			this.form.markAllAsTouched();
