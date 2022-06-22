@@ -116,7 +116,6 @@ export class LayoutComponent implements OnInit {
 						confirmButtonColor: '#c00d0d',
 					});
 				}
-				console.log(this.votante);
 			},
 			(err: any) => {
 				console.log(err);
@@ -152,8 +151,6 @@ export class LayoutComponent implements OnInit {
 		(response: any) => {
 			let respuesta = response;
 
-
-
 			if(respuesta.length == 0){
 				this.candidato_input = false;
 			
@@ -163,7 +160,6 @@ export class LayoutComponent implements OnInit {
 
 			this.candidatos = response;
 			this.singleton.updateLoading(false);
-			console.log(this.candidato_input );
 		},
 		(err: any) => {
 			console.log(err);
@@ -193,7 +189,6 @@ export class LayoutComponent implements OnInit {
 		(response: any) => {
 
 			let respuesta = response;
-			console.log(respuesta);
 			//-- Close Loading
 			if (respuesta.ok) {
 				Swal.fire({

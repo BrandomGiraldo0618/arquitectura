@@ -1,12 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApirestService } from '@core/services/apirest.service';
 import { SingletonService } from '@core/services/singleton.service';
-
-import { Chart } from 'frappe-charts';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { listLocales } from 'ngx-bootstrap/chronos';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import * as moment from 'moment';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 import 'moment/locale/es';
 
 @Component({
@@ -46,7 +41,6 @@ export class ReportComponent implements OnInit {
                     element['width_style'] = `width: ${Math.round(element.total_votos_partido / (this.tipo == 1 ? this.totalVotosCamara : this.totalVotosSenado) * 100)}%`;
                     element['width'] = `${Math.round(element.total_votos_partido / (this.tipo == 1 ? this.totalVotosCamara : this.totalVotosSenado) * 100)}%`;
                 });
-                console.log(this.info_tipos);
 				this.singleton.updateLoading(false);
 			},
 			(err: any) => {
@@ -69,4 +63,32 @@ export class ReportComponent implements OnInit {
 			}
 		);
 	}
+
+    openModal(info){
+        
+        let candidatos = info.candidatos_ganaron.length == 1 ? info.candidatos_ganaron[0] : info.candidatos_ganaron;
+        let table = `<table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Candidato</th>
+                                <th scope="col">Cantidad de Votos</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+        candidatos.forEach(element => {
+            table += `<tr>
+                        <td>${element.nombre_candidato}</td>
+                        <td>${element.cantidad_votos}</td>
+                    </tr>`;
+        });
+        
+        table += `</tbody>
+                    </table>`;
+        Swal.fire({
+            title: `Partido ${info.nombre_partido}`,
+            html: table,
+            confirmButtonColor: '#c00d0d',
+        });
+    }
 }
