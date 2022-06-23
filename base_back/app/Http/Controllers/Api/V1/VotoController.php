@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\VotoPatronFactory;
 use App\Models\Persona;
 use App\Models\Voto;
 use App\Models\Partido;
@@ -40,10 +41,10 @@ class VotoController extends Controller
         $votante= Votante::where('persona_id',$persona->id)->first();
         if(null != $votante){
             //Que no tenga un voto registrado de ese tipo (senado - camara)
-            $voto = DB::select("SELECT id 
-                                    FROM votos 
+            $voto = DB::select("SELECT id
+                                    FROM votos
                                 WHERE votante_id = $votante->id AND tipo_id = $request->tipo_voto");
-            
+
             if(null == $voto){
                 //REGISTRAMOS EL VOTO
                 $new_voto = new Voto();
@@ -53,9 +54,9 @@ class VotoController extends Controller
                 $new_voto->partido_id = $request->partido_id;
 
                 if("" == $request->candidato_id){
-                    $new_voto->candidato_id = null; 
+                    $new_voto->candidato_id = null;
                 }else{
-                    $new_voto->candidato_id = $request->candidato_id; 
+                    $new_voto->candidato_id = $request->candidato_id;
                 }
 
                 $new_voto->save();
@@ -77,7 +78,7 @@ class VotoController extends Controller
 
         if(null != $persona){
             $votante= Votante::where('persona_id',$persona->id)->first();
-            
+
             if(null != $votante){
                 return response()->json(true,Response::HTTP_OK);
             }else{
@@ -86,7 +87,7 @@ class VotoController extends Controller
         }else{
             return response()->json(false,Response::HTTP_OK);
         }
-        
+
     }
 
     public function partidoListaAC($partido_id, $tipo_voto){
@@ -146,67 +147,35 @@ class VotoController extends Controller
 
     public function infoVotosCamara()
     {
-        $totalVotosCamaraPartido = DB::Select(" SELECT
-                                                    p.nombre AS nombre_partido, 
-                                                    p.listaa_c AS tipo_lista,
-                                                    COUNT(v.id) AS total_votos_partido
-                                                FROM votos v
-                                                INNER JOIN partidos p
-                                                    ON p.id = v.partido_id
-                                                WHERE v.tipo_id = 1
-                                                GROUP BY p.nombre,
-                                                p.listaa_c
-                                                ORDER BY COUNT(v.id) DESC;");
+        $patron=new VotoPatronFactory();
 
-        $totalVotosCamara = DB::Select("SELECT 
-                                            COUNT(v.id) AS total_votos_camara
-                                        FROM votos v
-                                        WHERE v.tipo_id = 1;
-                                        ");    
-                                        
-        $totalPartidosCamara = DB::Select("SELECT 
-                                            COUNT(1) AS total_partidos_camara
-                                        FROM partidos
-                                        WHERE tipo_id = 1;
-                                        ");
-    
-        $candidatosCamara = DB::Select("SELECT 
-                                            p.nombre AS nombre_partido,
-                                            pr.nombre AS nombre_candidato,
-                                            COUNT(v.id)	AS cantidad_votos
-                                        FROM candidatos c
-                                        INNER JOIN personas pr
-                                            ON pr.id = c.persona_id
-                                        INNER JOIN partidos p
-                                            ON p.id = c.partido_id
-                                        INNER JOIN votos v
-                                            ON v.partido_id = p.id
-                                        WHERE c.tipo_id = 1
-                                        GROUP BY p.nombre,
-                                                pr.nombre,
-                                                c.id
-                                        ORDER BY 
-                                                COUNT(v.id),
-                                                c.id;
-                                    ");
+        $totalVotosCamaraPartido = $patron->infoVotosCamaraQuery(1);
+
+        
+
+        $totalVotosCamara = $patron->infoVotosCamaraQuery(2);
+
+        $totalPartidosCamara = $patron->infoVotosCamaraQuery(3);
+
+        $candidatosCamara = $patron->infoVotosCamaraQuery(4);
 
         $totalVotosCamara = $totalVotosCamara[0]->total_votos_camara;
         $totalPartidosCamara = $totalPartidosCamara[0]->total_partidos_camara;
         $umbralCamara = $totalVotosCamara / $totalPartidosCamara;
-   
-        //Hallar los partidos que superaron el umbral para la camara 
-        for ($i=0; $i < sizeof($totalVotosCamaraPartido); $i++) { 
+
+        //Hallar los partidos que superaron el umbral para la camara
+        for ($i=0; $i < sizeof($totalVotosCamaraPartido); $i++) {
             if($totalVotosCamaraPartido[$i]->total_votos_partido > $umbralCamara){
-                $totalVotosCamaraPartido[$i]->paso_umbral =  true;     
+                $totalVotosCamaraPartido[$i]->paso_umbral =  true;
             }
             else{
-                $totalVotosCamaraPartido[$i]->paso_umbral = false;                
-            }     
+                $totalVotosCamaraPartido[$i]->paso_umbral = false;
+            }
         }
 
         //Hallar la cantidad de candidatos por partido camara
 
-        for ($i=0; $i < sizeof($totalVotosCamaraPartido); $i++) { 
+        for ($i=0; $i < sizeof($totalVotosCamaraPartido); $i++) {
             if($totalVotosCamaraPartido[$i]->paso_umbral == true){
 
                 $totalVotosCamaraPartido[$i]->candidad_candidatos = floor($totalVotosCamaraPartido[$i]->total_votos_partido / 108);
@@ -217,15 +186,15 @@ class VotoController extends Controller
         }
 
 
-        //Hallar los candidatos que pasaron por cada partido de la camara         
-        for ($i=0; $i < sizeof($totalVotosCamaraPartido); $i++) { 
+        //Hallar los candidatos que pasaron por cada partido de la camara
+        for ($i=0; $i < sizeof($totalVotosCamaraPartido); $i++) {
             $candidatos = [];
             $candidatos_final = [];
 
             if($totalVotosCamaraPartido[$i]->paso_umbral == true && $totalVotosCamaraPartido[$i]->candidad_candidatos > 0){
 
-                for ($j=0; $j < sizeof($candidatosCamara); $j++) { 
-                  
+                for ($j=0; $j < sizeof($candidatosCamara); $j++) {
+
                     if($candidatosCamara[$j]->nombre_partido == $totalVotosCamaraPartido[$i]->nombre_partido){
 
                         $data_candidato = ["nombre_candidato" => $candidatosCamara[$j]->nombre_candidato,
@@ -238,12 +207,12 @@ class VotoController extends Controller
                 if(sizeof($candidatos) < $totalVotosCamaraPartido[$i]->candidad_candidatos){
                     array_push($candidatos_final, $candidatos);
                 }else {
-                    for($k = 0; $k < $totalVotosCamaraPartido[$i]->candidad_candidatos; $k++ ){                                    
-                        array_push($candidatos_final, $candidatos[$k]);    
+                    for($k = 0; $k < $totalVotosCamaraPartido[$i]->candidad_candidatos; $k++ ){
+                        array_push($candidatos_final, $candidatos[$k]);
                     }
-                } 
+                }
 
-                $totalVotosCamaraPartido[$i]->candidatos_ganaron = $candidatos_final;                             
+                $totalVotosCamaraPartido[$i]->candidatos_ganaron = $candidatos_final;
             }else{
                 $totalVotosCamaraPartido[$i]->candidatos_ganaron = $candidatos;
             }
@@ -253,66 +222,34 @@ class VotoController extends Controller
     }
 
     public function infoVotosSenado()
-    { 
-        $totalVotosSenadoPartido = DB::Select("SELECT
-                                                p.nombre nombre_partido, 
-                                                p.listaa_c tipo_lista,
-                                                COUNT(v.id) AS total_votos_partido
-                                            FROM votos v
-                                            INNER JOIN partidos p
-                                                ON p.id = v.partido_id
-                                            WHERE v.tipo_id = 2
-                                            GROUP BY p.nombre,
-                                                    p.listaa_c 
-                                            ORDER BY COUNT(v.id) DESC;");
+    {
+        $patron=new VotoPatronFactory();
+        $totalVotosSenadoPartido = $patron->infoVotosSenadoQuery(1);
 
-        $totalVotosSenado = DB::Select("SELECT 
-                                            COUNT(v.id) AS total_votos_senado
-                                        FROM votos v
-                                        WHERE v.tipo_id = 2;");    
+        $totalVotosSenado = $patron->infoVotosSenadoQuery(2);
 
-        $totalPartidosSenado = DB::Select("SELECT 
-                                                COUNT(1) AS total_partidos_senado
-                                            FROM partidos
-                                            WHERE tipo_id = 2;");
+        $totalPartidosSenado = $patron->infoVotosSenadoQuery(3);
 
-        $candidatosSenado = DB::Select("SELECT 
-                                            p.nombre AS nombre_partido,
-                                            pr.nombre AS nombre_candidato,
-                                            COUNT(v.id)	AS cantidad_votos
-                                        FROM candidatos c
-                                        INNER JOIN personas pr
-                                            ON pr.id = c.persona_id
-                                        INNER JOIN partidos p
-                                            ON p.id = c.partido_id
-                                        INNER JOIN votos v
-                                            ON v.partido_id = p.id
-                                        WHERE c.tipo_id = 2
-                                        GROUP BY p.nombre,
-                                            pr.nombre,
-                                            c.id
-                                        ORDER BY 
-                                            COUNT(v.id) DESC,
-                                            c.id;");                       
+        $candidatosSenado = $patron->infoVotosSenadoQuery(4);
 
         $totalVotosSenado = $totalVotosSenado[0]->total_votos_senado;
-        $totalPartidosSenado = $totalPartidosSenado[0]->total_partidos_senado;     
+        $totalPartidosSenado = $totalPartidosSenado[0]->total_partidos_senado;
         $umbralSenado =  $totalVotosSenado /  $totalPartidosSenado;
 
-        //Hallar los partidos que superaron el umbral para la camara 
-        for ($i=0; $i < sizeof($totalVotosSenadoPartido); $i++) { 
+        //Hallar los partidos que superaron el umbral para la camara
+        for ($i=0; $i < sizeof($totalVotosSenadoPartido); $i++) {
             if($totalVotosSenadoPartido[$i]->total_votos_partido > $umbralSenado){
                 $totalVotosSenadoPartido[$i]->paso_umbral =  true;
-        
+
             }
             else{
-                $totalVotosSenadoPartido[$i]->paso_umbral =  false;                
-            }     
-        }        
+                $totalVotosSenadoPartido[$i]->paso_umbral =  false;
+            }
+        }
 
         //Hallar la cantidad de candidatos por partido camara
 
-        for ($i=0; $i < sizeof($totalVotosSenadoPartido); $i++) { 
+        for ($i=0; $i < sizeof($totalVotosSenadoPartido); $i++) {
             if($totalVotosSenadoPartido[$i]->paso_umbral == true){
 
                 $totalVotosSenadoPartido[$i]->candidad_candidatos = floor($totalVotosSenadoPartido[$i]->total_votos_partido / 108);
@@ -324,17 +261,17 @@ class VotoController extends Controller
         }
 
 
-        //Hallar los candidatos que pasaron por cada partido de la camara 
- 
-        
-        for ($i=0; $i < sizeof($totalVotosSenadoPartido); $i++) { 
+        //Hallar los candidatos que pasaron por cada partido de la camara
+
+
+        for ($i=0; $i < sizeof($totalVotosSenadoPartido); $i++) {
             $candidatos = [];
             $candidatos_final = [];
 
             if($totalVotosSenadoPartido[$i]->paso_umbral == true && $totalVotosSenadoPartido[$i]->candidad_candidatos > 0){
 
-                for ($j=0; $j < sizeof($candidatosSenado); $j++) { 
-                  
+                for ($j=0; $j < sizeof($candidatosSenado); $j++) {
+
                     if($candidatosSenado[$j]->nombre_partido == $totalVotosSenadoPartido[$i]->nombre_partido){
 
                         $data_candidato = ["nombre_candidato" => $candidatosSenado[$j]->nombre_candidato,
@@ -348,42 +285,32 @@ class VotoController extends Controller
                     array_push($candidatos_final, $candidatos);
                 }else{
                     for($k = 0; $k < $totalVotosSenadoPartido[$i]->candidad_candidatos; $k++ ){
-                                    
-                        array_push($candidatos_final, $candidatos[$k]);    
+
+                        array_push($candidatos_final, $candidatos[$k]);
                     }
-                }                
+                }
 
                 $totalVotosSenadoPartido[$i]->candidatos_ganaron = $candidatos_final;
-                             
+
             }else{
                 $totalVotosSenadoPartido[$i]->candidatos_ganaron = $candidatos;
             }
         }
 
-        return response()->json($totalVotosSenadoPartido,Response::HTTP_CREATED);  
+        return response()->json($totalVotosSenadoPartido,Response::HTTP_CREATED);
 
     }
 
     public function totalVotos()
     {
-        $totalVotos = DB::select("SELECT 
-                                    COUNT(v.id) AS total_votos_senado
-                                        FROM votos v");
+        $patron=new VotoPatronFactory();
+        $totalVotos = $patron->totalVotosQuery(1);
 
-        $totalVotosCamara = DB::select("SELECT 
-                                COUNT(v.id) AS total_votos
-                                    FROM votos v
-                                WHERE v.tipo_id = 1");
+        $totalVotosCamara = $patron->totalVotosQuery(2);
+        $totalVotosSenado = $patron->totalVotosQuery(3);
 
-        $totalVotosSenado = DB::select("SELECT 
-                                COUNT(v.id) AS total_votos
-                                    FROM votos v
-                                WHERE v.tipo_id = 2");
+        $totalHabilitados = $patron->totalVotosQuery(4);
 
-        $totalHabilitados = DB::select("SELECT COUNT(*) AS total
-                                            FROM personas AS A
-                                                INNER JOIN votantes AS B ON A.id = B.persona_id");
-        
         return response()->json(
             [
                 "total_votos" => $totalVotos[0]->total_votos_senado,
