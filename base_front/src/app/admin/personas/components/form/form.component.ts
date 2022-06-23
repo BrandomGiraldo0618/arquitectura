@@ -69,7 +69,7 @@ export class FormComponent implements OnInit {
 			apellido: ['', [Validators.required]],
 			lugar_nacimiento: ['', [Validators.required]],
 			fecha_nacimiento: ['', [Validators.required]],
-			mesa_id: ['', [Validators.required]],
+			mesa_id: [''],
 			tipo_funcionario: ['', [Validators.required]],
 			partido_id: [''],
 			tipo_candidato_id: [''],
