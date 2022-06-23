@@ -173,22 +173,17 @@ class VotoController extends Controller
         $candidatosCamara = DB::Select("SELECT 
                                             p.nombre AS nombre_partido,
                                             pr.nombre AS nombre_candidato,
-                                            COUNT(v.id)	AS cantidad_votos
-                                        FROM candidatos c
-                                        INNER JOIN personas pr
-                                            ON pr.id = c.persona_id
-                                        INNER JOIN partidos p
-                                            ON p.id = c.partido_id
-                                        INNER JOIN votos v
-                                            ON v.partido_id = p.id
-                                        WHERE c.tipo_id = 1
-                                        GROUP BY p.nombre,
-                                                pr.nombre,
-                                                c.id
-                                        ORDER BY 
-                                                COUNT(v.id),
-                                                c.id;
-                                    ");
+                                            COUNT(*) AS cantidad_votos
+                                        FROM votos v
+                                            INNER JOIN partidos p
+                                                ON p.id = v.partido_id
+                                            INNER JOIN candidatos c
+                                                ON c.id = v.candidato_id
+                                            INNER JOIN personas pr
+                                                ON pr.id = c.persona_id
+                                        WHERE v.tipo_id = 1
+                                        GROUP BY p.nombre, pr.nombre
+                                        ORDER BY 3 DESC;");
 
         $totalVotosCamara = $totalVotosCamara[0]->total_votos_camara;
         $totalPartidosCamara = $totalPartidosCamara[0]->total_partidos_camara;
@@ -279,21 +274,17 @@ class VotoController extends Controller
         $candidatosSenado = DB::Select("SELECT 
                                             p.nombre AS nombre_partido,
                                             pr.nombre AS nombre_candidato,
-                                            COUNT(v.id)	AS cantidad_votos
-                                        FROM candidatos c
-                                        INNER JOIN personas pr
-                                            ON pr.id = c.persona_id
-                                        INNER JOIN partidos p
-                                            ON p.id = c.partido_id
-                                        INNER JOIN votos v
-                                            ON v.partido_id = p.id
-                                        WHERE c.tipo_id = 2
-                                        GROUP BY p.nombre,
-                                            pr.nombre,
-                                            c.id
-                                        ORDER BY 
-                                            COUNT(v.id) DESC,
-                                            c.id;");                       
+                                            COUNT(*) AS cantidad_votos
+                                        FROM votos v
+                                            INNER JOIN partidos p
+                                                ON p.id = v.partido_id
+                                            INNER JOIN candidatos c
+                                                ON c.id = v.candidato_id
+                                            INNER JOIN personas pr
+                                                ON pr.id = c.persona_id
+                                        WHERE v.tipo_id = 2
+                                        GROUP BY p.nombre, pr.nombre
+                                        ORDER BY 3 DESC;");                       
 
         $totalVotosSenado = $totalVotosSenado[0]->total_votos_senado;
         $totalPartidosSenado = $totalPartidosSenado[0]->total_partidos_senado;     
