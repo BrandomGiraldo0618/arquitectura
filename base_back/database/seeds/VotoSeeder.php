@@ -15,7 +15,7 @@ class VotoSeeder extends Seeder
     public function run()
     {
         Voto::factory()
-                ->count(100)
+                ->count(5000)
                 ->create();
     }
 }
